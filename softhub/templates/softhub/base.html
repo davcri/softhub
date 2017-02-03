@@ -1,0 +1,66 @@
+<!-- This file is the base for the majority of the other templates -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block title %}
+      <title>SoftHub</title>
+    {% endblock %}
+
+    <!-- TODO use local bootstrap (with bower) and use CDN in production -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+    integrity="sha256-PZLhE6wwMbg4AB3d35ZdBF9HD/dI/y4RazA3iRDurss="
+    crossorigin="anonymous" /> -->
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
+
+    {% block stylesheets %}
+    {% endblock stylesheets %}
+
+  </head>
+
+  <body class="gray-background">
+    {% include "softhub/components/navbar.html" %}
+
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+      integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+      crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+      crossorigin="anonymous"></script>
+
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js"
+      integrity="sha256-cLWs9L+cjZg8CjGHMpJqUgKKouPlmoMP/0wIdPtaPGs="
+      crossorigin="anonymous"></script>
+
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.min.js"
+      integrity="sha256-JIW8lNqN2EtqC6ggNZYnAdKMJXRQfkPMvdRt+b0/Jxc="
+      crossorigin="anonymous"></script>
+
+    <!-- <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script> -->
+    <!-- <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
+      integrity="sha256-P93G0oq6PBPWTP1IR8Mz/0jHHUpaWL0aBJTKauisG7Q="
+      crossorigin="anonymous"></script> -->
+
+  </body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'softhub/base.html' %}
+
+{% block title %}
+  <title>{{ app }}: upload executable</title>
+{% endblock %}
+
+
+{% block content %}
+  <form action={% url 'softhub:app_executable_upload' %}
+        method="post"/
+        enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {% load crispy_forms_tags %}
+    {{ form|crispy }}
+
+    <input type="submit" value="Submit" class="btn btn-default">
+  </form>
+
+{% endblock %}

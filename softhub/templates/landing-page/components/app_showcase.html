@@ -1,0 +1,16 @@
+<section class="no-padding" id="portfolio">
+  <h2 class="section-heading text-center">Apps</h2>
+  <hr>
+  
+  <div class="container-fluid">
+      <div class="row no-gutter popup-gallery">
+
+        {# should limit to 6 app #}
+        {# should check the rendering for cold start #}
+        {% for app in apps  %}
+          {% include "./app_box.html" %}
+        {% endfor %}
+
+      </div>
+  </div>
+</section>

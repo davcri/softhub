@@ -1,0 +1,37 @@
+<!--
+  Shows an application and some information as Icon and Description.
+-->
+
+<div class="col-sm-6 col-md-4">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{ app.name }}</h3>
+    </div>
+
+    <div class="panel-body">
+      <div class="thumbnail">
+        {% if app.icon %}
+        <img src={{ app.icon.url }} class="fixed-img-size" alt="{{ app.description }}">
+        {% else %}
+        <img src="" alt="missing image"> <!-- TODO: review this code -->
+        {% endif %}
+      </div>
+
+      <div class="caption">
+        <p>
+          {{ app.description }}
+        </p>
+        <p>
+          <a href="" class="btn btn-primary disabled" role="button">
+            Download
+          </a>
+          <a href="{% url 'softhub:app_detail' pk=app.id %}" class="btn btn-default" role="button">
+            <span class="glyphicon glyphicon-info-sign">
+            </span>
+            Details
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

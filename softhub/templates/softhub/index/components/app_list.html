@@ -1,0 +1,17 @@
+<!--
+  Shows a list of applications.
+
+  If the list is empty, it shows a warning.
+-->
+
+<h1>App Index</h1>
+
+{% if not apps %}
+  <div class="jumbotron">
+    No Application has been uploaded yet!
+  </div>
+{% endif %}
+
+{% for app in apps %}
+  {% include "./app.html" %}
+{% endfor %}

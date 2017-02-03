@@ -1,0 +1,28 @@
+{% extends 'softhub/base.html' %}
+
+<!-- Load the CSS file associated with this page -->
+{% block stylesheets %}
+  {% load staticfiles %}
+  <link rel="stylesheet" href="{% static "css/index.css" %}">
+{% endblock stylesheets %}
+
+
+{% block content %}
+  <div class="jumbotron">
+    <h2>Ready to use Apps!</h2>
+    <p>
+      Discover our Software Hub of applications!
+    </p>
+    <p><a class="btn btn-success btn-lg disabled" href="#" role="button">Learn more</a></p>
+  </div>
+
+  <div class="row">
+    {% include "./components/app_list.html" %}
+  </div>
+
+  <hr>
+
+  <div class="row">
+    {% include "./components/os_list.html" %}
+  </div>
+{% endblock %}

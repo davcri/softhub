@@ -1,0 +1,21 @@
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Developer Actions</h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="col-md-6">
+      <p>
+        <a href="{% url 'softhub:app_version_upload' %}?app={{ app.id }}">
+          Add new version for {{ app.name }}
+        </a>
+      </p>
+
+      <p>
+        <a href="{% url 'softhub:app_executable_upload' %}?app={{ app.id }}">
+          Add new executable for {{ app.name }}
+        </a>
+      </p>
+    </div>
+  </div>
+</div>

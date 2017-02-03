@@ -1,0 +1,19 @@
+{% extends 'softhub/base.html' %}
+
+{% block title %}
+  <title> {{ app }}: create new version  </title>
+{% endblock %}
+
+
+{% block content %}
+
+  <form action={% url 'softhub:app_version_upload' %} method="post"/>
+    {% csrf_token %}
+
+    {% load crispy_forms_tags %}
+    {{ form|crispy }}
+
+    <input type="submit" value="Submit" class="btn btn-default">
+  </form>
+
+{% endblock %}

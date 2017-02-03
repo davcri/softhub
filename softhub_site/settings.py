@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'crispy_forms',
+    # 'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -126,4 +129,21 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'softhub/uploads')
 MEDIA_URL = '/softhub/uploads/'
 
+
+
+# Authentication URLs
+
+LOGIN_URL = 'softhub:login'
+LOGIN_REDIRECT_URL = 'softhub:index'
+LOGOUT_REDIRECT_URL = 'softhub:index'
+
+
+# Auth model
+
 AUTH_USER_MODEL = 'softhub.User'
+
+
+# Cryspy app settings 
+# https://django-crispy-forms.readthedocs.io/en/latest/install.html
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

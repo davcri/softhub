@@ -1,0 +1,31 @@
+{% extends "softhub/base.html" %}
+
+
+{% block title %}
+  <title>App: {{ app.name }}</title>
+{% endblock title %}
+
+
+{% block content %}
+
+  <div class="row">
+    {% include "./components/app_summary.html" %}
+  </div>
+
+
+  <div class="row">
+    {% include "./components/app_downloads.html" %}
+  </div>
+
+
+  <!-- TODO this check needs to be on server side too!
+    This only prevents to have a quick access to the link, but a permission
+    system is needed to prevent others from execut developer's actions.
+  -->
+  {% if user.id is app.developer.user.id %}
+    <div class="row">
+      {% include "./components/app_developer_actions.html" %}
+    </div>
+  {% endif %}
+
+{% endblock %}

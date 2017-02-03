@@ -1,0 +1,12 @@
+.gray-background {
+  background-color: rgb(230, 230, 230);
+}
+
+.fixed-img-size {
+  height: 128px;
+  width: 128px;
+}
+
+.jumbotron {
+  background-color: white
+}

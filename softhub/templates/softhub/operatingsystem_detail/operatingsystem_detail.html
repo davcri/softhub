@@ -1,0 +1,18 @@
+{% extends "softhub/base.html" %}
+
+{% block content %}
+
+  <h1>{{ os.name }}</h1>
+
+  <p>
+    Release date = {{ os.release_date }} <br>
+
+    <b>Packages:</b>
+    <ul>
+      {% for package in packages %}
+        <li> {{ package }} </li>
+      {% endfor %}
+    </ul>
+  </p>
+
+{% endblock %}

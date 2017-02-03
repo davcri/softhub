@@ -1,0 +1,36 @@
+<!--
+  Shows simple informations for an application.
+-->
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1 class="panel-title"> {{ app.name }} </h1>
+  </div>
+
+  <div class="panel-body">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        {% if app.icon %}
+          <img src={{ app.icon.url }}
+            class="fixed-img-size"
+            alt={{ app.description }}>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <p>
+        <b>Description</b>
+
+        <br> <br>
+        {{ app.description }}
+      </p>
+    </div>
+
+    <div class="col-md-4">
+      <b>Developer</b>: {{ app.developer }} <br>
+      <b>License</b>: ... <br>
+      <b>Website</b>: ...<br>
+    </div>
+  </div>
+</div>

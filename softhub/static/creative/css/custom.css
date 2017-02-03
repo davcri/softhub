@@ -1,0 +1,16 @@
+/* Davide Cristini
+  File made some change to the base creative.css
+*/
+
+/* Overrides */
+
+.portfolio-box {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+/* New classes */
+.fixed-img-size {
+  height: 128px;
+  width: 128px;
+}
