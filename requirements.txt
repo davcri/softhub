@@ -1,0 +1,6 @@
+
+Django==1.10.4
+django-crispy-forms==1.6.1
+django-extensions==1.7.5
+djangorestframework==3.5.3
+Pillow==3.4.2
