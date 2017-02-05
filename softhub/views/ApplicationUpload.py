@@ -22,7 +22,15 @@ class ApplicationUpload(CreateView):
         else:
             pass  # Trigger some exception?
 
-        return super(CreateView, self).dispatch(request, *args, **kwargs)
+        # if somebody try to access this URL/view but is not a developer
+        if not self.user.isDeveloper():
+            # uncomment the next line to return only a forbidden page with
+            # http code 403
+            #
+            # self.raise_exception = True
+            return self.handle_no_permission()
+        else:
+            return super(CreateView, self).dispatch(request, *args, **kwargs)
 
     def get_form(self):
         """ Override method to pass user_id parameter to the form
