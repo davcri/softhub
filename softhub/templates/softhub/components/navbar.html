@@ -13,7 +13,11 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <!-- <li><a href="#"> softhub </a></li> -->
-        <li><a href={% url 'softhub:app_upload' %}> Upload App <span class="glyphicon glyphicon-plus"></span> </a></li>
+
+        {% if user.isDeveloper and user.is_authenticated %}
+          <li><a href={% url 'softhub:app_upload' %}> Upload App <span class="glyphicon glyphicon-plus"></span> </a></li>
+        {% endif %}
+
         <li><a href="#">About <i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i></a></li>
         <!-- <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li> -->
