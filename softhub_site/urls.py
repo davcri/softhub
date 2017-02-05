@@ -19,11 +19,11 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 
-# from softhub_site.views.LandingPage import LandingPage
+from softhub_site.views.LandingPage import LandingPage
 
 
 urlpatterns = [
-    # url(r'^$', LandingPage.as_view(), name='landing-page'),
+    url(r'^$', LandingPage.as_view(), name='landing-page'),
     url(r'^softhub/', include('softhub.urls')),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
