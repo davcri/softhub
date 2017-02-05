@@ -3,3 +3,6 @@
 
 # upload dir
 softhub/uploads/*
+
+# bower directory
+softhub/static/bower-components/*

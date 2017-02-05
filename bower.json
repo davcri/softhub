@@ -1,0 +1,24 @@
+{
+  "name": "softhub_site",
+  "authors": [
+    "Davide Cristini <davcri91@gmail.com>"
+  ],
+  "description": "Software hub",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "softhub/static/bower-components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "magnific-popup": "^1.1.0",
+    "font-awesome": "^4.7.0",
+    "bootstrap": "^3.3.7",
+    "scrollreveal": "^3.3.2"
+  }
+}
