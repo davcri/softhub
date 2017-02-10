@@ -1,8 +1,8 @@
 from django.conf.urls import url, include
-# from rest_framework.routers import DefaultRouter
+from rest_framework.routers import DefaultRouter
 from django.contrib.auth import views as auth_views
 
-# from .rest_api.view_set import *
+from .rest_api.view_set import *
 from .views.SofthubIndex import SofthubIndex
 from .views.OperatingSystemDetail import OperatingSystemDetail
 from .views.ApplicationDetail import ApplicationDetail
@@ -53,14 +53,14 @@ urlpatterns += [
 
 
 # REST router
-# router = DefaultRouter()
-# router.register(r'os', OperatingSystemViewSet)
-# router.register(r'app', ApplicationViewSet)
-# router.register(r'version', VersionViewSet)
-# router.register(r'executable', ExecutableViewSet)
-# router.register(r'developer', DeveloperViewSet)
-#
-# urlpatterns += [
-#     url(r'^api/',
-#         include(router.urls)),
-# ]
+router = DefaultRouter()
+router.register(r'os', OperatingSystemViewSet)
+router.register(r'app', ApplicationViewSet)
+router.register(r'version', VersionViewSet)
+router.register(r'executable', ExecutableViewSet)
+router.register(r'developer', DeveloperViewSet)
+
+urlpatterns += [
+    url(r'^api/',
+        include(router.urls)),
+]
