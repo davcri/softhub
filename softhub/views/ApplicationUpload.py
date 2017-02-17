@@ -15,8 +15,8 @@ class ApplicationUpload(CreateView):
 
     @method_decorator(login_required)
     def dispatch(self, request, *args, **kwargs):
-
-        # TODO Note that this should be always True, because of the method_decorator
+        # TODO Note that this should be always True, because of the
+        # method_decorator
         if request.user.is_authenticated:
             self.user = request.user
         else:
