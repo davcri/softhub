@@ -1,12 +1,14 @@
 from django.conf.urls import url, include
 from rest_framework.routers import DefaultRouter
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.decorators import login_required
 
 from .rest_api.view_set import *
 from .views.SofthubIndex import SofthubIndex
 from .views.OperatingSystemDetail import OperatingSystemDetail
 from .views.ApplicationDetail import ApplicationDetail
 from .views.ApplicationUpload import ApplicationUpload
+from .views.ApplicationUpdate import ApplicationUpdate
 from .views.VersionUpload import VersionUpload
 from .views.ExecutableUpload import ExecutableUpload
 from .views.UserCreation import UserCreation
@@ -38,6 +40,10 @@ urlpatterns = [
     url(r'^upload/app_executable/',
         ExecutableUpload.as_view(),
         name='app_executable_upload'),
+
+    url(r'^app/(?P<pk>[0-9]+)/update/',
+        login_required(ApplicationUpdate.as_view()),
+        name='app_update'),
 ]
 
 

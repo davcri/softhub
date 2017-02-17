@@ -1,0 +1,18 @@
+{% extends 'softhub/base.html' %}
+
+{% block title %}
+  <title>Update application</title>
+{% endblock %}
+
+
+{% block content %}
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% load crispy_forms_tags %}
+    {{ form|crispy }}
+
+    <input type="submit" value="Update" class="btn btn-default">
+  </form>
+
+{% endblock %}
