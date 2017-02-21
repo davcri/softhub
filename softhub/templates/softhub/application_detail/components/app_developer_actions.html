@@ -7,13 +7,19 @@
     <div class="col-md-6">
       <p>
         <a href="{% url 'softhub:app_version_upload' %}?app={{ app.id }}">
-          Add new version for {{ app.name }}
+          <i class="fa fa-tag" aria-hidden="true"></i>  Add new version for {{ app.name }}
         </a>
       </p>
 
       <p>
         <a href="{% url 'softhub:app_executable_upload' %}?app={{ app.id }}">
-          Add new executable for {{ app.name }}
+          <i class="fa fa-cube" aria-hidden="true"></i>  Add new executable for {{ app.name }}
+        </a>
+      </p>
+
+      <p>
+        <a href="{% url 'softhub:app_update' app.id %}">
+          <i class="fa fa-wrench" aria-hidden="true"></i>  Update {{ app.name }} details
         </a>
       </p>
     </div>
