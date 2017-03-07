@@ -23,3 +23,6 @@ class Application(models.Model):
 
     def __str__(self):
         return self.name
+
+    def ownedByDev(self, developer):
+        return self.developer == developer
