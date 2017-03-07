@@ -10,3 +10,12 @@
 .jumbotron {
   background-color: white
 }
+
+.container-fluid {
+  background-color: black;
+}
+
+.footer{
+  margin-left: 8%;
+  margin-right: 8%;
+}
