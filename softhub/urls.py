@@ -30,15 +30,17 @@ urlpatterns = [
         name='app_detail'),
 
     url(r'^upload/app/',
+        # login is required, and it's done via a
+        # decorator inside ApplicationUpload class.
         ApplicationUpload.as_view(),
         name='app_upload'),
 
     url(r'^upload/app_version/',
-        VersionUpload.as_view(),
+        login_required(VersionUpload.as_view()),
         name='app_version_upload'),
 
     url(r'^upload/app_executable/',
-        ExecutableUpload.as_view(),
+        login_required(ExecutableUpload.as_view()),
         name='app_executable_upload'),
 
     url(r'^app/(?P<pk>[0-9]+)/update/',
