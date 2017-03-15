@@ -6,3 +6,6 @@ softhub/uploads/*
 
 # bower directory
 softhub/static/bower-components/*
+
+# python manage.py can create Models .svg graph with Django_extensions 
+*.svg
