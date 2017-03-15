@@ -1,3 +1,8 @@
+/*
+  This .css file is in common between all the pages that extend
+  softhub/templates/softhub/base.html
+*/
+
 .gray-background {
   background-color: rgb(230, 230, 230);
 }
@@ -11,11 +16,7 @@
   background-color: white
 }
 
-.container-fluid {
+.footer-black{
   background-color: black;
-}
-
-.footer{
-  margin-left: 8%;
-  margin-right: 8%;
+  padding-top: 2em;
 }
