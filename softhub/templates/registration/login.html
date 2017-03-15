@@ -8,12 +8,21 @@
     For example: http://127.0.0.1:8000/softhub/login/?next=/softhub/upload/app/
   -->
   {% if next %}
-      {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
-      {% else %}
-      <p>Please login to see this page.</p>
-      {% endif %}
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        Login Required
+      </div>
+      <div class="panel-body">
+
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+        {% else %}
+        <p>Please login to see this page.</p>
+        {% endif %}
+
+      </div>
+    </div>
   {% endif %}
 
   <form class="" action="{% url 'softhub:login' %}" method="post">
