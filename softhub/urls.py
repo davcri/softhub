@@ -9,6 +9,7 @@ from .views.OperatingSystemDetail import OperatingSystemDetail
 from .views.ApplicationDetail import ApplicationDetail
 from .views.ApplicationUpload import ApplicationUpload
 from .views.ApplicationUpdate import ApplicationUpdate
+from .views.VersionUpdate import VersionUpdate
 from .views.VersionUpload import VersionUpload
 from .views.ExecutableUpload import ExecutableUpload
 from .views.UserCreation import UserCreation
@@ -29,21 +30,27 @@ urlpatterns = [
         ApplicationDetail.as_view(),
         name='app_detail'),
 
-    url(r'^upload/app/',
+    # TODO Change url scheme
+    url(r'^upload/app/$',
         ApplicationUpload.as_view(),
         name='app_upload'),
 
-    url(r'^upload/app_version/',
+    # TODO Use pk for app, instead of passing the value via GET parameter!
+    url(r'^upload/app_version/$',
         VersionUpload.as_view(),
         name='app_version_upload'),
 
-    url(r'^upload/app_executable/',
+    url(r'^upload/app_executable/$',
         ExecutableUpload.as_view(),
         name='app_executable_upload'),
 
-    url(r'^app/(?P<pk>[0-9]+)/update/',
+    url(r'^app/update/(?P<pk>[0-9]+)/$',
         login_required(ApplicationUpdate.as_view()),
         name='app_update'),
+        
+    url(r'^app/version/update/(?P<pk>[0-9]+)/$',
+        login_required(VersionUpdate.as_view()),
+        name='version_update'),
 ]
 
 
