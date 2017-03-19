@@ -26,6 +26,10 @@
                   {{ version }}
                 </a>
 
+                {% if user.id is app.developer.user.id %}
+                  ===> <a href="{% url 'softhub:version_update' version.id %}">Update this version</a>
+                {% endif %}
+
               </h4>
             </div>
 
@@ -33,7 +37,6 @@
               class="panel-collapse collapse in"
               role="tabpanel"
               aria-labelledby="heading{{ forloop.counter }}">
-
               <div class="panel-body">
 
                 {% for executable in executables %}
