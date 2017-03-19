@@ -1,5 +1,5 @@
 from django.views.generic.edit import UpdateView
-from django.urls import reverse_lazy
+from django.urls import reverse
 from django.core.exceptions import PermissionDenied
 
 from softhub.models.Application import Application
@@ -17,7 +17,6 @@ class VersionUpdate(UpdateView):
 
     template_name = 'softhub/version_form/version_update.html'
     # template_name_suffix = '_update_form'
-    success_url = reverse_lazy('softhub:index')
 
     def dispatch(self, request, *args, **kwargs):
         appId = kwargs.get('pk')
@@ -36,6 +35,8 @@ class VersionUpdate(UpdateView):
                 VersionUpdate,
                 self).dispatch(request, *args, **kwargs)
 
+    def get_success_url(self):
+        return reverse('softhub:app_detail', kwargs={'pk': self.app.id})
     # def get_object(self, queryset=None, *args, **kwargs):
     #     version_id = self.kwargs.get('version_id')
     #
