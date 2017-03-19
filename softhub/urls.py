@@ -32,6 +32,8 @@ urlpatterns = [
 
     # TODO Change url scheme
     url(r'^upload/app/$',
+        # Note: login is required, the check is done inside the
+        # ApplicationUpload class with a decorator.
         ApplicationUpload.as_view(),
         name='app_upload'),
 
@@ -47,7 +49,7 @@ urlpatterns = [
     url(r'^app/update/(?P<pk>[0-9]+)/$',
         login_required(ApplicationUpdate.as_view()),
         name='app_update'),
-        
+
     url(r'^app/version/update/(?P<pk>[0-9]+)/$',
         login_required(VersionUpdate.as_view()),
         name='version_update'),
