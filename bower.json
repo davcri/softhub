@@ -17,8 +17,9 @@
   ],
   "dependencies": {
     "magnific-popup": "^1.1.0",
-    "font-awesome": "^4.7.0",
+    "font-awesome": "fontawesome#^4.7.0",
     "bootstrap": "^3.3.7",
-    "scrollreveal": "^3.3.2"
+    "scrollreveal": "^3.3.2",
+    "jquery.easing": "jquery-easing-original#^1.4.1"
   }
 }

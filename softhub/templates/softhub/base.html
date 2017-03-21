@@ -52,13 +52,19 @@
 
     <!-- TODO use local bootstrap (with bower) and use CDN in production -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.1.0.min.js"
       integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"></script> -->
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    <script src="{% static 'bower-components/jquery/dist/jquery.js' %}"
+      charset="utf-8"></script>
+
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
       integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous"></script>
+      crossorigin="anonymous"></script> -->
+
+    <script src="{% static 'bower-components/bootstrap/dist/js/bootstrap.js' %}"
+      charset="utf-8"></script>
 
     <!-- <script type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
