@@ -51,11 +51,11 @@ urlpatterns = [
         login_required(ApplicationUpdate.as_view()),
         name='app_update'),
 
-    url(r'^app/version/update/(?P<pk>[0-9]+)/$',
+    url(r'^app/version/(?P<pk>[0-9]+)/update$',
         login_required(VersionUpdate.as_view()),
         name='version_update'),
 
-    url(r'^app/executable/update/(?P<pk>[0-9]+)/$',
+    url(r'^app/executable/(?P<pk>[0-9]+)/update$',
         login_required(ExecutableUpdate.as_view()),
         name='executable_update'),
 ]

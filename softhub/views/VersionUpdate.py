@@ -16,6 +16,7 @@ class VersionUpdate(UpdateView):
     # data and trick this url ?
 
     template_name = 'softhub/version_form/version_update.html'
+    context_object_name = 'version'
 
     def dispatch(self, request, *args, **kwargs):
         versionId = kwargs.get('pk')

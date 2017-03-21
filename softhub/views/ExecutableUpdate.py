@@ -9,6 +9,7 @@ class ExecutableUpdate(UpdateView):
     model = Executable
     fields = ['version', 'release_platform', 'info', 'executable_file']
     template_name = 'softhub/executable_form/executable_update.html'
+    context_object_name = 'executable'
 
     def dispatch(self, request, *args, **kwargs):
         executableId = kwargs.get('pk')
