@@ -16,12 +16,10 @@ class VersionUpdate(UpdateView):
     # data and trick this url ?
 
     template_name = 'softhub/version_form/version_update.html'
-    # template_name_suffix = '_update_form'
 
     def dispatch(self, request, *args, **kwargs):
-        appId = kwargs.get('pk')
-        self.app = Application.objects.get(version=appId)
-        print(self.app, appId)
+        versionId = kwargs.get('pk')
+        self.app = Application.objects.get(version=versionId)
 
         dev = Developer.objects.get(user_id=request.user)
 
@@ -37,7 +35,3 @@ class VersionUpdate(UpdateView):
 
     def get_success_url(self):
         return reverse('softhub:app_detail', kwargs={'pk': self.app.id})
-    # def get_object(self, queryset=None, *args, **kwargs):
-    #     version_id = self.kwargs.get('version_id')
-    #
-    #     return Version.objects.get(application=self.app, id=version_id)
