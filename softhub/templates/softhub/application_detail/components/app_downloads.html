@@ -44,7 +44,12 @@
                     <a href="{{ executable.executable_file.url }}">
                       {{ executable }}
                     </a>
+
+                    {% if user.id is app.developer.user.id %}
+                      ====> <a href="{% url 'softhub:executable_update' executable.id %}">Update this executable</a>
+                    {% endif %}
                     <br>
+                    
                   {% endif %}
                 {% endfor %}
 

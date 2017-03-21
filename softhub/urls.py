@@ -12,6 +12,7 @@ from .views.ApplicationUpdate import ApplicationUpdate
 from .views.VersionUpdate import VersionUpdate
 from .views.VersionUpload import VersionUpload
 from .views.ExecutableUpload import ExecutableUpload
+from .views.ExecutableUpdate import ExecutableUpdate
 from .views.UserCreation import UserCreation
 
 
@@ -53,6 +54,10 @@ urlpatterns = [
     url(r'^app/version/update/(?P<pk>[0-9]+)/$',
         login_required(VersionUpdate.as_view()),
         name='version_update'),
+
+    url(r'^app/executable/update/(?P<pk>[0-9]+)/$',
+        login_required(ExecutableUpdate.as_view()),
+        name='executable_update'),
 ]
 
 
