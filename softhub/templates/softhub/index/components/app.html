@@ -11,9 +11,9 @@
     <div class="panel-body">
       <div class="thumbnail">
         {% if app.icon %}
-        <img src={{ app.icon.url }} class="fixed-img-size" alt="{{ app.description }}">
+          <img src={{ app.icon.url }} class="fixed-img-size" alt="{{ app.description }}">
         {% else %}
-        <img src="" alt="missing image"> <!-- TODO: review this code -->
+          <img src="" alt="missing image"> <!-- TODO: review this code -->
         {% endif %}
       </div>
 
@@ -32,6 +32,7 @@
           </a>
         </p>
       </div>
+
     </div>
   </div>
 </div>

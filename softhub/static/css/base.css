@@ -8,15 +8,19 @@
 }
 
 .fixed-img-size {
-  height: 128px;
-  width: 128px;
+  height: 100px;
+  width: 100px;
 }
 
 .jumbotron {
   background-color: white
 }
 
-.footer-black{
+.footer-black {
   background-color: black;
   padding-top: 2em;
 }
+
+/*.sidebar {
+  background-color: rgba(0,0,0,0.1);
+}*/
