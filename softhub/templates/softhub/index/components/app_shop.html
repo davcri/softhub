@@ -6,11 +6,14 @@
 
 <div class="col-sm-4 col-lg-4 col-md-4">
     <div class="thumbnail">
-        <img src="{{ app.icon.url }}" alt="">
+        <a href="{% url 'softhub:app_detail' app.id %}">
+          <img src="{{ app.icon.url }}" alt="" id="test">
+        </a>
+
         <div class="caption">
             <h4 class="pull-right">$24.99</h4>
             <h4>
-              <a href="#"> {{ app.name }} </a>
+              <a href="{% url 'softhub:app_detail' app.id %}"> {{ app.name }} </a>
             </h4>
             <p>
               {{ app.description }}
