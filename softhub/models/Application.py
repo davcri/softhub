@@ -16,8 +16,8 @@ def upload_dir(app, filename):
 class Application(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
-    # version = models.('Version', on_delete=models.CASCADE)
     developer = models.ForeignKey('Developer', on_delete=models.CASCADE)
+
     icon = models.ImageField(upload_to=upload_dir)
     icon.blank = True
 
