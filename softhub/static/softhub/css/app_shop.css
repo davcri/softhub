@@ -17,13 +17,18 @@
 .thumbnail img {
     width: 128px;
     padding: 1.2em;
-
-    opacity: 0.85;
-    transition: 0.5s
+    margin: 0;
 }
 
-.thumbnail img:hover {
+.fade-on-hover {
     opacity: 1;
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.5s;
+}
+
+.fade-on-hover:hover {
+    opacity: 0.85;
+    background-color: rgba(0, 0, 0, 0.5)
 }
 
 .ratings {

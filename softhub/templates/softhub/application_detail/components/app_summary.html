@@ -18,19 +18,23 @@
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-8">
+      <p>
+        <b>Developer</b>: {{ app.developer }} <br>
+        <b>License</b>: {% if app.license %} {{ app.license }}
+          {% else %}
+            No license specified
+          {% endif %}
+        <br>
+
+        <b>Website</b>: ...<br>
+      </p>
+
       <p>
         <b>Description</b>
-
-        <br> <br>
+        <br>
         {{ app.description }}
       </p>
-    </div>
-
-    <div class="col-md-4">
-      <b>Developer</b>: {{ app.developer }} <br>
-      <b>License</b>: ... <br>
-      <b>Website</b>: ...<br>
     </div>
   </div>
 </div>
