@@ -21,6 +21,18 @@
   padding-top: 2em;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+footer {
+    height: 100%;
+}
+
 /*.sidebar {
   background-color: rgba(0,0,0,0.1);
 }*/
