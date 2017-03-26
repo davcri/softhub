@@ -6,5 +6,10 @@ class Version(models.Model):
     release_date = models.DateField('Release Date')
     application = models.ForeignKey('Application', on_delete=models.CASCADE)
 
+    license = models.ForeignKey('License',
+                                on_delete=models.SET_NULL,
+                                null=True)
+    license.blank = True
+
     def __str__(self):
         return self.application.name + " " + self.version_string
