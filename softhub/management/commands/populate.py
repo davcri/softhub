@@ -3,6 +3,7 @@ from django.utils import timezone
 
 from softhub.models.OperatingSystem import OperatingSystem
 from softhub.models.User import User
+from softhub.models.Developer import Developer
 from softhub.models.License import License
 
 
@@ -58,18 +59,14 @@ class Command(BaseCommand):
 
         for (u, m) in data:
             try:
-                user = User(username=u, email=m)
-                user.save()
+                user = User.objects.create_user(username=u, password=pwd)
+
+                dev = Developer(user=user)
+                dev.save()
+                self.stdout.write(str(dev) + " created")
+
             except Exception as e:
                 self.printWarning(u, e)
-
-        # try:
-        #     User
-        # if not User.objects.filter(username=username):
-        #     admin = User.objects.create_superuser(username, email, password)
-        #     print("superuser created:", admin)
-        # else:
-        #     print("ERROR: no user created.", username, "already exist")
 
     def create_os(self):
         os_list = []
