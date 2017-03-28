@@ -12,12 +12,6 @@
 
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-
-        <!-- TODO note that users can still access the upload URL inserting it manually !-->
-        {% if user.isDeveloper and user.is_authenticated %}
-          <li><a href={% url 'softhub:app_upload' %}> Upload App <span class="glyphicon glyphicon-plus"></span> </a></li>
-        {% endif %}
-
         <li><a href="#">About <i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i></a></li>
         <!-- <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li> -->
@@ -31,6 +25,9 @@
             </a>
 
             <ul class="dropdown-menu">
+              {% if user.isDeveloper and user.is_authenticated %}
+                <li><a href={% url 'softhub:app_upload' %}> Upload App <span class="glyphicon glyphicon-plus"></span> </a></li>
+              {% endif %}
               <li class="disabled"><a href="#">User page</a></li>
               <li><a href={% url 'softhub:logout' %}>Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
             </ul>
