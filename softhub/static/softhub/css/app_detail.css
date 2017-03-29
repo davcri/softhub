@@ -1,19 +1,18 @@
 .thumbnail {
-    width: 825px;
-    height: 300px;
+  width: 825px;
+}
+
+img {
+  max-height: 256px;
 }
 
 .ratings {
-    padding-right: 1.4em;
-    padding-left: 1.4em;
-    color: #d17581;
-}
-
-.thumbnail {
-    padding: 0;
+  padding-right: 1.4em;
+  padding-left: 1.4em;
+  color: #d17581;
 }
 
 .thumbnail .caption-full {
-    padding: 1.4em;
-    color: #333;
+  padding: 1.4em;
+  color: #333;
 }
