@@ -5,11 +5,13 @@ from django.core.exceptions import PermissionDenied
 from softhub.models.Application import Application
 from softhub.models.Version import Version
 from softhub.models.Developer import Developer
+from softhub.views.VersionForm import VersionForm
 
 
 class VersionUpdate(UpdateView):
     model = Version
-    fields = ['version_string', 'release_date']
+    form_class = VersionForm
+
     # TODO check if django accepts other fields with a crafted HTTP request.
     # These fields can be changed, but what about the others ?
     # The input form is not showed, but can a malicious user submit raw HTTP
