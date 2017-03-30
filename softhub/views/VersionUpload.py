@@ -25,6 +25,19 @@ class VersionUpload(CreateView):
             }
         return initial
 
+    def post(self, request, *args, **kwargs):
+        # If it is the latest version, remove the "latest_version" flag from
+        # the latest Version object.
+        if request.POST.get('latest_version') == 'on':
+            try:
+                v = Version.objects.get(latest_version=True)
+                v.latest_version = False
+                v.save()
+            except Version.DoesNotExist:
+                pass
+
+        return super().post(request, args, kwargs)
+
     def get_context_data(self, **kwargs):
         # This method is executed only for GET requests.
         context = super(VersionUpload, self).get_context_data(**kwargs)
