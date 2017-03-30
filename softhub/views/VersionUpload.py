@@ -1,10 +1,12 @@
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.views.generic import CreateView
+from django.core.exceptions import PermissionDenied
 
 from softhub.models.Version import Version
 from softhub.views.VersionForm import VersionForm
 from softhub.models.Application import Application
+from softhub.models.Developer import Developer
 
 
 class VersionUpload(CreateView):
@@ -24,14 +26,20 @@ class VersionUpload(CreateView):
         return initial
 
     def get_context_data(self, **kwargs):
+        # This method is executed only for GET requests.
         context = super(VersionUpload, self).get_context_data(**kwargs)
-
-        # TODO: only if in GET method!
-        # consider moving this code in get method.
+        developer = Developer.objects.get(user=self.request.user)
 
         id = self.request.GET.get('app', '')
         if id:
             app = Application.objects.get(id=id)
-            context['app'] = app
+            if app.ownedByDev(developer):
+                context['app'] = app
+            else:
+                raise PermissionDenied
+
+        else:
+            raise Exception("Version Upload: no application specified." +
+                            "Missing id parameter in query string")
 
         return context
