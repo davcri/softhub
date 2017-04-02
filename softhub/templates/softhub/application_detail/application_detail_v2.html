@@ -21,13 +21,11 @@
 
         <h4 class="pull-right">$ todo</h4>
         <h4>
-          <a href="#"> {{ app.name }}</a>
+          {{ app.name }}
         </h4>
 
         <p>
           {{ app.description }}
-
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
 
         <div class="ratings">
@@ -43,43 +41,24 @@
         </div>
 
         <br>
+
         <div class="row">
-          <div class="col-md-6">
-            <ul class="list-group">
-              <li class="list-group-item">
-                Version
-                <span class="badge"> {{ app.get_latest_version }}</span>
-              </li>
-
-              <li class="list-group-item">
-                Downloads
-                <span class="badge">todo</span>
-              </li>
-
-              <li class="list-group-item">
-                Size
-                <span class="badge">todo</span>
-              </li>
-
-            </ul>
-          </div>
 
           <div class="col-md-6">
-            <ul class="list-group">
-              <li class="list-group-item">
-                Website
-                <span class="badge">todo</span>
-              </li>
-
-              <li class="list-group-item">
-                License
-                <span class="badge">todo</span>
-              </li>
-            </ul>
+            {% include "./components/app_downloads.html" %}
           </div>
-        </div>
+
+          {% include "./components/app_details_panels.html" %}
+
+          {% if user.id is app.developer.user.id %}
+            <div class="col-md-12">
+              {% include "./components/app_developer_actions.html" %}
+            </div>
+          {% endif %}
+        </div> <!-- row ends -->
 
       </div>
+
     </div>
 
     <div class="well">

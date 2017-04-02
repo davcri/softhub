@@ -5,59 +5,66 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h2 class="panel-title"> Downloads </h2>
+    <h2 class="panel-title"> Download </h2>
   </div>
-
   <div class="panel-body">
     <p>
-      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
-        {% for version in versions %}
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="heading{{ forloop.counter }}">
-              <h4 class="panel-title">
+      <div class="col-md-4 text-center">
 
-                <a role="button"
-                  data-toggle="collapse"
-                  data-parent="#accordion"
-                  href="#collapse{{ forloop.counter }}"
-                  aria-expanded="true"
-                  aria-controls="collapse{{ forloop.counter }}">
-                  {{ version }}
-                </a>
-
-                {% if user.id is app.developer.user.id %}
-                  ===> <a href="{% url 'softhub:version_update' version.id %}">Update this version</a>
-                {% endif %}
-
-              </h4>
-            </div>
-
-            <div id="collapse{{ forloop.counter }}"
-              class="panel-collapse collapse in"
-              role="tabpanel"
-              aria-labelledby="heading{{ forloop.counter }}">
-              <div class="panel-body">
-
-                {% for executable in executables %}
-                  {% if executable.version.id == version.id %}
-                    <a href="{{ executable.executable_file.url }}">
-                      {{ executable }}
-                    </a>
-
-                    {% if user.id is app.developer.user.id %}
-                      ====> <a href="{% url 'softhub:executable_update' executable.id %}">Update this executable</a>
-                    {% endif %}
-                    <br>
-                    
-                  {% endif %}
-                {% endfor %}
-
-              </div>
-            </div>
-          </div>
-        {% endfor %}
+        <i class="fa fa-windows fa-4x" aria-hidden="true"></i>
       </div>
+      <div class="col-md-4 text-center">
+        <i class="fa fa-apple fa-4x" aria-hidden="true"></i>
+
+      </div>
+      <div class="col-md-4 text-center">
+        <i class="fa fa-linux fa-4x" aria-hidden="true"></i>
+
+      </div>
+
+      <br> <br>
+
+      
+      {% with latest_executable=app.get_latest_executable %}
+
+        {% if latest_executable %}
+
+          {% for exe in latest_executable %}
+            {# {% if exe.release_platform.family == 'linux' %} #}
+
+            {# {% elif exe.release_platform.family == 'windows' %} #}
+
+            {# {% elif exe.release_platform.family == 'osx' %} #}
+
+            {# {% endif %} #}
+
+            <a href="{{ exe.executable_file.url }}">
+              {{ exe }}
+            </a>
+            <br>
+
+          {% endfor %}
+
+        {% else %}
+
+          No executable has been uploaded for the latest version of {{ app }}.
+        {% endif %}
+
+      {% endwith %}
+
+
+
+      {% if user.id is app.developer.user.id %}
+        {# TODO #}
+        {# ====> <a href="{% url 'softhub:executable_update' executable.id %}">Update this executable</a> #}
+      {% endif %}
+
+      <p>
+        {# TODO #}
+        <a href="#">See all the versions</a>
+      </p>
+
     </p>
   </div>
 </div>
