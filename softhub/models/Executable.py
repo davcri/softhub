@@ -19,19 +19,12 @@ def upload_dir(executable, filename):
 class Executable(models.Model):
     version = models.ForeignKey('Version', on_delete=models.CASCADE,
                                 related_name="version_executable")
-    release_platform = models.ManyToManyField('OperatingSystem')
+    release_platform = models.ForeignKey('OperatingSystem')
     info = models.CharField(max_length=200)
     info.blank = True
 
     executable_file = models.FileField(upload_to=upload_dir)
 
     def __str__(self):
-        platforms = self.release_platform.all()
-
-        supported_systems = []
-        for p in platforms:
-            supported_systems.append(p.__str__())
-        supported_systems = "/ ".join(supported_systems)
-
-        return (self.version.__str__() + ' [' + supported_systems + ']' +
-                self.info)
+        platform = self.release_platform.__str__()
+        return (self.version.__str__() + ' [' + platform + ']')
