@@ -1,6 +1,7 @@
 from django.db import models
 
 from softhub.models.Version import Version
+from softhub.models.Executable import Executable
 
 
 def upload_dir(app, filename):
@@ -30,8 +31,10 @@ class Application(models.Model):
         return self.developer == developer
 
     def get_latest_version(self):
+        ''' The latest version object'''
         versions = Version.objects.filter(application_id=self.id)
 
+        # TODO improve ugly code
         latest = None
         for v in versions:
             if v.latest_version:
@@ -39,3 +42,9 @@ class Application(models.Model):
                 break
 
         return latest
+
+    def get_latest_executable(self):
+        ''' The latest version object'''
+        v = self.get_latest_version()
+        executables = Executable.objects.filter(version=v)
+        return executables
