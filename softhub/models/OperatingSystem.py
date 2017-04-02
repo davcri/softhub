@@ -12,8 +12,5 @@ class OperatingSystem(models.Model):
         ('osx', 'OSx')
     )
 
-    # executables = models.ManyToManyField('Executable')
-    # executables.blank = True
-
     def __str__(self):
         return self.name
