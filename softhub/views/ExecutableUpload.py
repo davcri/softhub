@@ -16,11 +16,13 @@ class ExecutableUpload(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(ExecutableUpload, self).get_context_data(**kwargs)
-        id = self.request.GET.get('app', '')
 
-        # TODO exceptions
-        app = Application.objects.get(id=id)
-        context['app'] = app
+        if self.request == "GET":
+            id = self.request.GET.get('app', '')
+
+            # TODO exceptions
+            app = Application.objects.get(id=id)
+            context['app'] = app
 
         return context
 
