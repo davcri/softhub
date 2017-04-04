@@ -10,47 +10,32 @@
   <div class="panel-body">
     <p>
 
-      <div class="col-md-4 text-center">
+      {% with latest_executables=app.get_latest_executable %}
+        {% if latest_executables %}
+          {% for exe in latest_executables %}
 
-        <i class="fa fa-windows fa-4x" aria-hidden="true"></i>
-      </div>
-      <div class="col-md-4 text-center">
-        <i class="fa fa-apple fa-4x" aria-hidden="true"></i>
-
-      </div>
-      <div class="col-md-4 text-center">
-        <i class="fa fa-linux fa-4x" aria-hidden="true"></i>
-
-      </div>
-
-      <br> <br>
-
-      
-      {% with latest_executable=app.get_latest_executable %}
-
-        {% if latest_executable %}
-
-          {% for exe in latest_executable %}
-            {# {% if exe.release_platform.family == 'linux' %} #}
-
-            {# {% elif exe.release_platform.family == 'windows' %} #}
-
-            {# {% elif exe.release_platform.family == 'osx' %} #}
-
-            {# {% endif %} #}
-
-            <a href="{{ exe.executable_file.url }}">
-              {{ exe }}
-            </a>
-            <br>
+            {% if exe.release_platform.family == 'linux' %}
+              <div class="col-md-4 text-center">
+                <i class="fa fa-linux fa-4x" aria-hidden="true"></i>
+              </div>
+            {% elif exe.release_platform.family == 'windows' %}
+              <div class="col-md-4 text-center">
+                <i class="fa fa-windows fa-4x" aria-hidden="true"></i>
+              </div>
+            {% elif exe.release_platform.family == 'osx' %}
+              <div class="col-md-4 text-center">
+                <i class="fa fa-apple fa-4x" aria-hidden="true"></i>
+              </div>
+            {% endif %}
 
           {% endfor %}
-
+          <a href="{{ exe.executable_file.url }}">
+            {{ exe }}
+          </a>
+          <br>
         {% else %}
-
           No executable has been uploaded for the latest version of {{ app }}.
         {% endif %}
-
       {% endwith %}
 
 
