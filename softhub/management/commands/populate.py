@@ -70,32 +70,21 @@ class Command(BaseCommand):
 
     def create_os(self):
         os_list = []
+        linux = OperatingSystem()
+        linux.family = 'linux'
 
-        mint = OperatingSystem()
-        mint.name = "Linux Mint 18"
-        mint.release_date = timezone.datetime(
-            2016, 6, 30, tzinfo=timezone.utc)
-        mint.family = "linux"
-        os_list.append(mint)
+        windows = OperatingSystem()
+        windows.family = 'windows'
 
-        ubuntu = OperatingSystem()
-        ubuntu.name = "Ubuntu 16.04"
-        ubuntu.release_date = timezone.datetime(
-            2016, 4, 21, tzinfo=timezone.utc)
-        ubuntu.family = "linux"
-        os_list.append(ubuntu)
+        osx = OperatingSystem()
+        osx.family = 'osx'
 
-        windows7 = OperatingSystem()
-        windows7.name = "Windows 7"
-        windows7.release_date = timezone.datetime(
-            2009, 7, 22, tzinfo=timezone.utc)
-        windows7.family = "windows"
-        os_list.append(windows7)
+        os_list.append(linux)
+        os_list.append(windows)
+        os_list.append(osx)
 
         for os in os_list:
             try:
-                if OperatingSystem.objects.filter(name=os.name):
-                    raise Exception("Operating system already exist")
                 os.save()
                 print("OS created", os)
             except Exception as e:
