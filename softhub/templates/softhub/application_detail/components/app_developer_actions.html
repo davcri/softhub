@@ -12,7 +12,7 @@
       </p>
 
       <p>
-        <a href="{% url 'softhub:app_executable_upload' %}?app={{ app.id }}">
+        <a href="{% url 'softhub:app_executable_upload' app.id %}">
           <i class="fa fa-cube" aria-hidden="true"></i>  Add new executable for {{ app.name }}
         </a>
       </p>

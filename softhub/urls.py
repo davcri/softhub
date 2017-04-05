@@ -43,7 +43,7 @@ urlpatterns = [
         VersionUpload.as_view(),
         name='app_version_upload'),
 
-    url(r'^upload/app_executable/',
+    url(r'^upload/app_executable/(?P<pk>[0-9]+)$',
         login_required(ExecutableUpload.as_view()),
         name='app_executable_upload'),
 
