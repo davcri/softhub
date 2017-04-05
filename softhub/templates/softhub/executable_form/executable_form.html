@@ -6,7 +6,7 @@
 
 
 {% block content %}
-  <form action={% url 'softhub:app_executable_upload' %}
+  <form action="{% url 'softhub:app_executable_upload' app.id %}"
         method="post"/
         enctype="multipart/form-data">
 

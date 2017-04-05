@@ -17,8 +17,8 @@ class ExecutableUpload(CreateView):
         """ Add 'app' to the context template's variables """
 
         context = super(ExecutableUpload, self).get_context_data(**kwargs)
-        if self.request == "GET":
-            context['app'] = self.get_object()
+        context['app'] = self.get_object()
+
         return context
 
     def get_form(self):
