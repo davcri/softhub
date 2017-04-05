@@ -6,7 +6,7 @@
   <div class="panel-body">
     <div class="col-md-6">
       <p>
-        <a href="{% url 'softhub:app_version_upload' %}?app={{ app.id }}">
+        <a href="{% url 'softhub:app_version_upload' app.id %}">
           <i class="fa fa-tag" aria-hidden="true"></i>  Add new version for {{ app.name }}
         </a>
       </p>

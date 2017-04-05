@@ -31,15 +31,13 @@ urlpatterns = [
         ApplicationDetail.as_view(),
         name='app_detail'),
 
-    # TODO Change url scheme
     url(r'^upload/app/$',
         # Note: login is required, the check is done inside the
         # ApplicationUpload class with a decorator.
         ApplicationUpload.as_view(),
         name='app_upload'),
 
-    # TODO Use pk for app, instead of passing the value via GET parameter!
-    url(r'^upload/app_version/$',
+    url(r'^upload/app_version/(?P<pk>[0-9]+)$',
         VersionUpload.as_view(),
         name='app_version_upload'),
 

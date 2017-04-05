@@ -7,7 +7,7 @@
 
 {% block content %}
 
-  <form action={% url 'softhub:app_version_upload' %} method="post"/>
+  <form action={% url 'softhub:app_version_upload' app.id %} method="post"/>
     {% csrf_token %}
 
     {% load crispy_forms_tags %}
