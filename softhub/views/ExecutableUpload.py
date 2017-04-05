@@ -14,15 +14,11 @@ class ExecutableUpload(CreateView):
     template_name = 'softhub/executable_form/executable_form.html'
 
     def get_context_data(self, **kwargs):
+        """ Add 'app' to the context template's variables """
+
         context = super(ExecutableUpload, self).get_context_data(**kwargs)
-        #
-        # if self.request == "GET":
-        #     self.id = self.request.GET.get('app', '')
-        #
-        #     # TODO exceptions
-        #     app = Application.objects.get(id=self.id)
-        #     context['app'] = app
-        context['app'] = self.get_object()
+        if self.request == "GET":
+            context['app'] = self.get_object()
         return context
 
     def get_form(self):
@@ -48,7 +44,7 @@ class ExecutableUpload(CreateView):
             # objects.
             # Select only the versions of the application id passed via a GET
             # parameter.
-            form.fields['version'].queryset = ( # TODO change in 'versions'
+            form.fields['version'].queryset = (  # TODO change in 'versions'
                 Version.objects.filter(application_id=app.id))
 
         return form
@@ -66,9 +62,5 @@ class ExecutableUpload(CreateView):
         return Application.objects.get(id=app_id)
 
     def get_success_url(self):
-        # This works only if the URL contains a pk
-        # parameter, otherwise this exception is raised:
-        # AttributeError: Generic detail view ExecutableUpload must be called
-        # with either an object pk or a slug.
         app = self.get_object()
         return reverse('softhub:app_detail', kwargs={'pk': app.id})
