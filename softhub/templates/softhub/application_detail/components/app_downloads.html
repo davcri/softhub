@@ -15,23 +15,26 @@
           {% for exe in latest_executables %}
 
             {% if exe.release_platform.family == 'linux' %}
-              <div class="col-md-4 text-center">
-                <i class="fa fa-linux fa-4x" aria-hidden="true"></i>
-              </div>
+              <a href="{{ exe.executable_file.url }}" class="disabled">
+                <div class="col-md-4 text-center">
+                  <i class="fa fa-linux fa-4x" aria-hidden="true"></i>
+                </div>
+              </a>
             {% elif exe.release_platform.family == 'windows' %}
-              <div class="col-md-4 text-center">
-                <i class="fa fa-windows fa-4x" aria-hidden="true"></i>
-              </div>
+              <a href="{{ exe.executable_file.url }}">
+                <div class="col-md-4 text-center">
+                  <i class="fa fa-windows fa-4x" aria-hidden="true"></i>
+                </div>
+              </a>
             {% elif exe.release_platform.family == 'osx' %}
-              <div class="col-md-4 text-center">
-                <i class="fa fa-apple fa-4x" aria-hidden="true"></i>
-              </div>
+              <a href="{{ exe.executable_file }}">
+                <div class="col-md-4 text-center">
+                  <i class="fa fa-apple fa-4x" aria-hidden="true"></i>
+                </div>
+              </a>
             {% endif %}
 
           {% endfor %}
-          <a href="{{ exe.executable_file.url }}">
-            {{ exe }}
-          </a>
           <br>
         {% else %}
           No executable has been uploaded for the latest version of {{ app }}.

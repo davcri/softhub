@@ -1,5 +1,5 @@
 <div class="col-md-6">
-  
+
   <ul class="list-group">
     <li class="list-group-item">
       Version
@@ -12,18 +12,13 @@
     </li>
 
     <li class="list-group-item">
-      Size
-      <span class="badge">todo</span>
-    </li>
-
-    <li class="list-group-item">
       Website
-      <span class="badge">todo</span>
+      <span class="badge"> <a href="{{ app.website }}">{{ app.website }}</a></span>
     </li>
 
     <li class="list-group-item">
       License
-      <span class="badge">todo</span>
+      <span class="badge"> {{ app.get_latest_version.license|default:"No license" }}</span>
     </li>
   </ul>
 
