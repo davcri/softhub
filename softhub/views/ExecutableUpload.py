@@ -49,6 +49,13 @@ class ExecutableUpload(CreateView):
 
         return form
 
+    def get_initial(self):
+        initial = {}
+        v = self.get_object().get_latest_version()
+        if v is not None:
+            initial['version'] = v.id
+        return initial
+
     def get_object(self):
         """
         By default get_object() would return an Executable with id equals to
