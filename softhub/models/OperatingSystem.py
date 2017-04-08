@@ -15,7 +15,11 @@ class OperatingSystem(models.Model):
         ('windows', 'Windows'),
         ('osx', 'OSx')
     )
-    family = models.CharField(max_length=200, unique=True, choices=SUPPORTED_OPERATING_SYSTEMS)
+    family = models.CharField(
+        max_length=200,
+        unique=True,
+        choices=SUPPORTED_OPERATING_SYSTEMS
+    )
 
     def __str__(self):
         return self.family
