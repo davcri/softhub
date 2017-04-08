@@ -19,6 +19,7 @@ def upload_dir(app, filename):
 class Application(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
+    website = models.URLField()
     developer = models.ForeignKey('Developer', on_delete=models.CASCADE)
 
     icon = models.ImageField(upload_to=upload_dir)
@@ -43,8 +44,14 @@ class Application(models.Model):
 
         return latest
 
-    def get_latest_executable(self):
-        ''' The latest version object'''
+    def get_latest_executables(self):
+        ''' Executables objects for the latest version of the application '''
         v = self.get_latest_version()
         executables = Executable.objects.filter(version=v)
         return executables
+
+    # def get_non_latest_executables(self):
+    #     q1 = Executable.objects.all()
+    #     q2 = self.get_latest_executables()
+    #
+    #     return
