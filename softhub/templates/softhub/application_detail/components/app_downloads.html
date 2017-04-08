@@ -7,40 +7,53 @@
   <div class="panel-heading">
     <h2 class="panel-title"> Download </h2>
   </div>
+
   <div class="panel-body">
     <p>
+      {% if latest_executables %}
 
-      {% with latest_executables=app.get_latest_executable %}
-        {% if latest_executables %}
-          {% for exe in latest_executables %}
+        {% for exe in latest_executables.values  %}
+          {% if 'linux' in exe.release_platform.family %}
+            <a href="{{ exe.executable_file.url }}">
+              <div class="col-md-4 text-center">
+                <i class="fa fa-linux fa-4x" aria-hidden="true"></i>
+              </div>
+            </a>
+          {% else %}
+            <div class="col-md-4 text-center">
+              <i class="fa fa-linux fa-4x" aria-hidden="true"></i>
+            </div>
+          {% endif %}
 
-            {% if exe.release_platform.family == 'linux' %}
-              <a href="{{ exe.executable_file.url }}" class="disabled">
-                <div class="col-md-4 text-center">
-                  <i class="fa fa-linux fa-4x" aria-hidden="true"></i>
-                </div>
-              </a>
-            {% elif exe.release_platform.family == 'windows' %}
-              <a href="{{ exe.executable_file.url }}">
-                <div class="col-md-4 text-center">
-                  <i class="fa fa-windows fa-4x" aria-hidden="true"></i>
-                </div>
-              </a>
-            {% elif exe.release_platform.family == 'osx' %}
-              <a href="{{ exe.executable_file }}">
-                <div class="col-md-4 text-center">
-                  <i class="fa fa-apple fa-4x" aria-hidden="true"></i>
-                </div>
-              </a>
-            {% endif %}
+          {% if 'windows' in latest_executables %}
+            <a href="{{ exe.executable_file.url }}">
+              <div class="col-md-4 text-center">
+                <i class="fa fa-windows fa-4x" aria-hidden="true"></i>
+              </div>
+            </a>
+          {% else %}
+            <div class="col-md-4 text-center">
+              <i class="fa fa-windows fa-4x" aria-hidden="true"></i>
+            </div>
+          {% endif %}
 
-          {% endfor %}
+          {% if 'osx' in latest_executables %}
+            <a href="{{ exe.executable_file.url }}">
+              <div class="col-md-4 text-center">
+                <i class="fa fa-apple fa-4x" aria-hidden="true"></i>
+              </div>
+            </a>
+          {% else %}
+            <div class="col-md-4 text-center">
+              <i class="fa fa-apple fa-4x" aria-hidden="true"></i>
+            </div>
+          {% endif %}
+
           <br>
-        {% else %}
-          No executable has been uploaded for the latest version of {{ app }}.
-        {% endif %}
-      {% endwith %}
-
+        {% endfor %}
+      {% else %}
+        No executable has been uploaded for the latest version of {{ app }}.
+      {% endif %}
 
 
       {% if user.id is app.developer.user.id %}
