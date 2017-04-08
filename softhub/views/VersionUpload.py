@@ -30,10 +30,13 @@ class VersionUpload(CreateView):
         """ If it is the latest version, remove the "latest_version" flag from
         the latest Version object.
         """
-
+        app = self.get_object()
         if request.POST.get('latest_version') == 'on':
             try:
-                v = Version.objects.get(latest_version=True)
+                v = Version \
+                    .objects \
+                    .filter(application_id=app.id) \
+                    .get(latest_version=True)
                 v.latest_version = False
                 v.save()
             except Version.DoesNotExist:
