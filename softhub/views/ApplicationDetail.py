@@ -30,7 +30,8 @@ class ApplicationDetail(DetailView):
                 context['windows'] = e
 
         context['versions'] = Version.objects.filter(application_id=app.id)
-        context['executables'] = exes
+        context['executables'] = Executable.objects.filter(
+            version__application_id=app.id)
 
         # context['other_executables'] =
         print(context)

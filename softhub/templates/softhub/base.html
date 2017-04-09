@@ -48,6 +48,8 @@
 
     {% include "./components/footer.html" %}
 
+
+
     <!-- TODO use local bootstrap (with bower) and use CDN in production -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- <script src="https://code.jquery.com/jquery-3.1.0.min.js"
@@ -65,9 +67,12 @@
       charset="utf-8"></script>
 
     <!-- <script type="text/javascript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
-      integrity="sha256-P93G0oq6PBPWTP1IR8Mz/0jHHUpaWL0aBJTKauisG7Q="
-      crossorigin="anonymous"></script> -->
+    src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
+    integrity="sha256-P93G0oq6PBPWTP1IR8Mz/0jHHUpaWL0aBJTKauisG7Q="
+    crossorigin="anonymous"></script> -->
+
+    {% block scripts %}
+    {% endblock scripts %}
 
   </body>
 </html>

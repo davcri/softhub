@@ -119,3 +119,10 @@
   </div>
 
 {% endblock %}
+
+
+{% block scripts %}
+  {{block.super}}
+  
+  <script src="{% static 'softhub/js/application_detail/components/app_versions_and_executables_table.js' %}" charset="utf-8"></script>
+{% endblock scripts %}
