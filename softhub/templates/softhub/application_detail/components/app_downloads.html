@@ -10,11 +10,11 @@
 
   <div class="panel-body">
     <p>
-      {% if latest_executables %}
 
-        {% for exe in latest_executables.values  %}
-          {% if 'linux' in exe.release_platform.family %}
-            <a href="{{ exe.executable_file.url }}">
+
+
+          {% if linux %}
+            <a href="{{ linux.executable_file.url }}">
               <div class="col-md-4 text-center">
                 <i class="fa fa-linux fa-4x" aria-hidden="true"></i>
               </div>
@@ -25,8 +25,8 @@
             </div>
           {% endif %}
 
-          {% if 'windows' in latest_executables %}
-            <a href="{{ exe.executable_file.url }}">
+          {% if windows %}
+            <a href="{{ windows.executable_file.url }}">
               <div class="col-md-4 text-center">
                 <i class="fa fa-windows fa-4x" aria-hidden="true"></i>
               </div>
@@ -37,8 +37,8 @@
             </div>
           {% endif %}
 
-          {% if 'osx' in latest_executables %}
-            <a href="{{ exe.executable_file.url }}">
+          {% if osx %}
+            <a href="{{ osx.executable_file.url }}">
               <div class="col-md-4 text-center">
                 <i class="fa fa-apple fa-4x" aria-hidden="true"></i>
               </div>
@@ -49,11 +49,17 @@
             </div>
           {% endif %}
 
+          {% if not linux and not osx and not windows %}
+            <p>
+              No executable has been uploaded for the latest version of {{ app }}.
+            </p>
+          {% endif %}
+
           <br>
-        {% endfor %}
-      {% else %}
-        No executable has been uploaded for the latest version of {{ app }}.
-      {% endif %}
+
+
+
+
 
 
       {% if user.id is app.developer.user.id %}

@@ -19,23 +19,20 @@ class ApplicationDetail(DetailView):
         # https://stackoverflow.com/questions/15754122/url-parameters-and-logic-in-django-class-based-views-templateview#15754497
         # app_id = self.kwargs['pk']
 
-        # context['versions'] = Version.objects.filter(application_id=app.id)
-        # context['executables'] = Executable.objects.filter(
-        # version__application_id=app.id)
-
         exes = app.get_latest_executables()
         os_exe_dict = {}
         for e in exes:
             if e.release_platform.family == 'linux':
-                os_exe_dict['linux'] = e
+                context['linux'] = e
             elif e.release_platform.family == 'osx':
-                os_exe_dict['osx'] = e
+                context['osx'] = e
             elif e.release_platform.family == 'windows':
-                os_exe_dict['windows'] = e
-        print(os_exe_dict)
+                context['windows'] = e
 
-        context['latest_executables'] = os_exe_dict
+        context['versions'] = Version.objects.filter(application_id=app.id)
+        context['executables'] = exes
 
         # context['other_executables'] =
+        print(context)
 
         return context
