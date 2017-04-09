@@ -36,5 +36,15 @@ class VersionUpdate(UpdateView):
                 VersionUpdate,
                 self).dispatch(request, *args, **kwargs)
 
+    def post(self, request, *args, **kwargs):
+        """ If it is the latest version, remove the "latest_version" flag from
+        the latest Version object.
+        """
+        app = self.get_object().application
+        if request.POST.get('latest_version') == 'on':
+            Version.handleLatestVersionUpload(app.id)
+
+        return super().post(request, args, kwargs)
+
     def get_success_url(self):
         return reverse('softhub:app_detail', kwargs={'pk': self.app.id})

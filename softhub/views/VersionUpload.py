@@ -32,15 +32,7 @@ class VersionUpload(CreateView):
         """
         app = self.get_object()
         if request.POST.get('latest_version') == 'on':
-            try:
-                v = Version \
-                    .objects \
-                    .filter(application_id=app.id) \
-                    .get(latest_version=True)
-                v.latest_version = False
-                v.save()
-            except Version.DoesNotExist:
-                pass
+            Version.handleLatestVersionUpload(app.id)
 
         return super().post(request, args, kwargs)
 
