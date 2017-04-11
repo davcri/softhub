@@ -34,6 +34,5 @@ class ApplicationDetail(DetailView):
             version__application_id=app.id)
 
         # context['other_executables'] =
-        print(context)
 
         return context
