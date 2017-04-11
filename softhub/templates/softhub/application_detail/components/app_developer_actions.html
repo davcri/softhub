@@ -7,25 +7,40 @@
     <div class="col-md-12">
       <p>
         <a href="{% url 'softhub:app_version_upload' app.id %}">
-          <i class="fa fa-tag" aria-hidden="true"></i>  Add new version for {{ app.name }}
+          <button type="button" name="button" class="btn btn-default">
+            <i class="fa fa-tag" aria-hidden="true"></i>
+            Add new version for {{ app.name }}
+          </button>
         </a>
       </p>
 
       <p>
         <a href="{% url 'softhub:app_executable_upload' app.id %}">
-          <i class="fa fa-cube" aria-hidden="true"></i>  Add new executable for {{ app.name }}
+          <button type="button" name="button" class="btn btn-default">
+            <i class="fa fa-cube" aria-hidden="true"></i>  Add new executable for {{ app.name }}
+          </button>
         </a>
       </p>
 
       <p>
         <a href="{% url 'softhub:app_update' app.id %}">
-          <i class="fa fa-wrench" aria-hidden="true"></i>  Update {{ app.name }} details
+          <button type="button" name="button" class="btn btn-default">
+            <i class="fa fa-wrench" aria-hidden="true"></i>  Edit app details
+          </button>
         </a>
       </p>
     </div>
 
     <div class="col-md-12">
-      {% include "./app_versions_and_executables_table.html" %}
+      <p>
+        {% include "./app_versions_table.html" %}
+      </p>
+    </div>
+
+    <div class="col-md-12">
+      <p>
+        {% include "./app_executables_table.html" %}
+      </p>
     </div>
 
   </div>

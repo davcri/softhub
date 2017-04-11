@@ -8,7 +8,7 @@ from softhub.models.Version import Version
 class ApplicationDetail(DetailView):
     model = Application
     context_object_name = 'app'
-    template_name = 'softhub/application_detail/application_detail_v2.html'
+    template_name = 'softhub/application_detail/application_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super(ApplicationDetail, self).get_context_data(**kwargs)

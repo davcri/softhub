@@ -1,0 +1,36 @@
+<!--
+  Shows a table containing all the versions and executables for the current
+  Application and buttons to edit them.
+-->
+
+<button type="button"
+        name="button"
+        class="btn btn-default"
+        data-toggle="button"
+        id="show-versions-table-btn">
+  <i class="fa fa-wrench" aria-hidden="true"></i>   Edit versions
+</button>
+
+<table class="table table-striped table-hover" id="app-versions-table" style="display:none">
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Edit Version</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for version in versions  %}
+      <tr>
+        <th scope="row">{{ version }} </th>
+        <td>
+          <a href="{% url 'softhub:version_update' version.id %}">
+            <button type="button" name="button" class="btn btn-default">
+              Edit
+            </button>
+          </a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
