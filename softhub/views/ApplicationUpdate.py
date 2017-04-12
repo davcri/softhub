@@ -9,13 +9,7 @@ from softhub.models.Developer import Developer
 
 class ApplicationUpdate(UpdateView):
     model = Application
-    # fields = ['name', 'description', 'website', 'icon']
     form_class = ApplicationForm
-    # TODO check if django accepts other fields with a crafted HTTP request.
-    # These fields can be changed, but what about the others ?
-    # The input form is not showed, but can a malicious user submit raw HTTP
-    # data and trick this url ?
-
     template_name = 'softhub/application_form/application_update_form.html'
     # template_name_suffix = '_update_form'
     # success_url = reverse_lazy('softhub:index')
@@ -28,7 +22,6 @@ class ApplicationUpdate(UpdateView):
         # if somebody try to access this URL/view but is not the owner of the
         # app
         if not app.ownedByDev(dev):
-            # TODO create a fancy PermissionDenied paged
             raise PermissionDenied()
         else:
             return super(

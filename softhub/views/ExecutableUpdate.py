@@ -22,7 +22,6 @@ class ExecutableUpdate(UpdateView):
         # if somebody try to access this URL/view but is not the owner of the
         # version
         if not app.ownedByDev(dev):
-            # TODO create a fancy PermissionDenied paged
             raise PermissionDenied()
         else:
             return super(

@@ -27,8 +27,8 @@ class ExecutableForm(ModelForm):
             operating_systems_with_an_executable.append(exe.release_platform)
 
         if release_platform in operating_systems_with_an_executable:
-            msg = ('An executable for version=[' +
-                str(version) + '] on ' +
-                release_platform.__str__() +
-                ' is already stored on the DB')
+            msg = ('An executable for version=['
+                   + str(version) + '] on '
+                   + release_platform.__str__()
+                   + ' is already stored on the DB')
             self.add_error('release_platform', msg)

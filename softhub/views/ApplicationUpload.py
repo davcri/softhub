@@ -29,10 +29,14 @@ class ApplicationUpload(CreateView):
 
 
 def get_form_with_user_id_kwarg(obj):
-    """ Get the form object, adds a user_id keywordw argument and return the
+    """ Get the form object and adds a user_id keyword argument; returns the
     form.
 
     This method is shared by ApplicationUpdate and ApplicationUpload classes.
+
+    Parameters
+    ----------
+    obj : ApplicationUpload object
     """
     form_class = obj.get_form_class()
     kwargs = obj.get_form_kwargs()
