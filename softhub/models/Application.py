@@ -29,7 +29,7 @@ class Application(models.Model):
     developer = models.ForeignKey('Developer', on_delete=models.CASCADE)
 
     icon = models.ImageField(upload_to=upload_dir)
-    icon.blank = True
+    # icon.blank = True
 
     def __str__(self):
         return self.name
@@ -55,6 +55,15 @@ class Application(models.Model):
         v = self.get_latest_version()
         executables = Executable.objects.filter(version=v)
         return executables
+
+    def get_absolute_url(self):
+        """ https://docs.djangoproject.com/en/1.11/ref/models/instances/#get-absolute-url
+
+            This method is used from generic views when "success_url" is not
+            setted.
+        """
+        from django.urls import reverse
+        return reverse('softhub:app_detail', kwargs={'pk': self.id})
 
     # def get_non_latest_executables(self):
     #     q1 = Executable.objects.all()
