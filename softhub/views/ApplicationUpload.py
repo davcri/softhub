@@ -25,9 +25,18 @@ class ApplicationUpload(CreateView):
     def get_form(self):
         """ Override method to pass user_id parameter to the form
         """
-        form_class = self.get_form_class()
-        form = form_class(
-            user_id=self.request.user.id,
-            **self.get_form_kwargs())
+        return get_form_with_user_id_kwarg(self)
 
-        return form
+
+def get_form_with_user_id_kwarg(obj):
+    """ Get the form object, adds a user_id keywordw argument and return the
+    form.
+
+    This method is shared by ApplicationUpdate and ApplicationUpload classes.
+    """
+    form_class = obj.get_form_class()
+    kwargs = obj.get_form_kwargs()
+    kwargs['user_id'] = obj.request.user.id
+    form = form_class(**kwargs)
+
+    return form

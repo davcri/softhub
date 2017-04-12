@@ -3,12 +3,14 @@ from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
 
 from softhub.models.Application import Application
+from softhub.views.ApplicationForm import ApplicationForm
 from softhub.models.Developer import Developer
 
 
 class ApplicationUpdate(UpdateView):
     model = Application
-    fields = ['name', 'description', 'website', 'icon']
+    # fields = ['name', 'description', 'website', 'icon']
+    form_class = ApplicationForm
     # TODO check if django accepts other fields with a crafted HTTP request.
     # These fields can be changed, but what about the others ?
     # The input form is not showed, but can a malicious user submit raw HTTP
@@ -16,7 +18,7 @@ class ApplicationUpdate(UpdateView):
 
     template_name = 'softhub/application_form/application_update_form.html'
     # template_name_suffix = '_update_form'
-    success_url = reverse_lazy('softhub:index')
+    # success_url = reverse_lazy('softhub:index')
 
     def dispatch(self, request, *args, **kwargs):
         appId = kwargs.get('pk')
@@ -32,3 +34,9 @@ class ApplicationUpdate(UpdateView):
             return super(
                 ApplicationUpdate,
                 self).dispatch(request, *args, **kwargs)
+
+    def get_form(self):
+        """ Override method to pass user_id parameter to the form
+        """
+        from softhub.views.ApplicationUpload import get_form_with_user_id_kwarg
+        return get_form_with_user_id_kwarg(self)

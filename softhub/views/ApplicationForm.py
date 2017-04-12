@@ -5,7 +5,7 @@ from softhub.models.Developer import Developer
 
 
 class ApplicationForm(ModelForm):
-    def __init__(self, user_id, *args, **kwargs):
+    def __init__(self, user_id=None, *args, **kwargs):
         self.user_id = user_id
         super(ModelForm, self).__init__(*args, **kwargs)
 
