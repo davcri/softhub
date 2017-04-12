@@ -5,11 +5,13 @@ from softhub.models.OperatingSystem import OperatingSystem
 from softhub.models.User import User
 from softhub.models.Developer import Developer
 from softhub.models.License import License
+from softhub.models.Category import Category
 
 
 class Command(BaseCommand):
     args = "<foo bar ...>"
-    help = "Populates the db with common initial values"
+    help = "Populates the db with faked data values. " \
+        + "Set verbose parameter to 2 in order to see errors messages"
     verbose = False
 
     def handle(self, *args, **options):
@@ -20,6 +22,7 @@ class Command(BaseCommand):
         self.create_superuser()
         self.create_common_users()
         self.create_licenses()
+        self.create_categories()
 
     def printWarning(self, obj1, exception):
         self.stderr.write("WARNING:" + str(obj1) + " not created.")
@@ -87,5 +90,25 @@ class Command(BaseCommand):
             try:
                 os.save()
                 print("OS created", os)
+            except Exception as e:
+                self.printWarning(os, e)
+
+    def create_categories(self):
+        categories_name = [
+            'internet',
+            'office',
+            'education',
+            'games',
+            'programming',
+            'utilities',
+            'video',
+            'audio',
+            'music'
+        ]
+
+        for c in categories_name:
+            try:
+                Category.objects.create(name=c)
+                print("Category created")
             except Exception as e:
                 self.printWarning(os, e)

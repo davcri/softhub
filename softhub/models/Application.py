@@ -2,6 +2,7 @@ from django.db import models
 
 from softhub.models.Version import Version
 from softhub.models.Executable import Executable
+from softhub.models.Category import Category
 
 
 def upload_dir(app, filename):
@@ -19,7 +20,12 @@ def upload_dir(app, filename):
 class Application(models.Model):
     name = models.CharField(max_length=200)
     description = models.CharField(max_length=500)
-    website = models.URLField()
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True)
+    website = models.URLField(blank=True)
     developer = models.ForeignKey('Developer', on_delete=models.CASCADE)
 
     icon = models.ImageField(upload_to=upload_dir)
