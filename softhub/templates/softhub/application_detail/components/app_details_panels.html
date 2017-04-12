@@ -3,22 +3,26 @@
   <ul class="list-group">
     <li class="list-group-item">
       Latest Version
-      <span class="badge"> {{ app.get_latest_version }}</span>
+      <span class="pull-right"> {{ app.get_latest_version }}</span>
     </li>
 
     <li class="list-group-item">
       Updated
-      <span class="badge"> {{ app.get_latest_version.release_date|default:"Never" }} </span>
+      <span class="pull-right"> {{ app.get_latest_version.release_date|default:"Never" }} </span>
+    </li>
+
+    <li class="list-group-item">
+      Category <span class="pull-right">{{ app.category }}</span>
     </li>
 
     <li class="list-group-item">
       Website
-      <span class="badge"> <a href="{{ app.website }}">{{ app.website }}</a></span>
+      <span class="pull-right"> <a href="{{ app.website }}">{{ app.website }}</a></span>
     </li>
 
     <li class="list-group-item">
       License
-      <span class="badge"> {{ app.get_latest_version.license|default:"No license" }}</span>
+      <span class="pull-right"> {{ app.get_latest_version.license|default:"No license" }}</span>
     </li>
   </ul>
 
