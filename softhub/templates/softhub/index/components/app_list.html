@@ -4,21 +4,13 @@
   If the list is empty, it shows a warning.
 -->
 
-<br>
-<br>
 
-<div class="col-md-3">
-  {% include "./sidebar.html" %}
-</div>
+{% if not apps %}
+  <div class="jumbotron">
+    No Application has been uploaded yet!
+  </div>
+{% endif %}
 
-<div class="col-md-9">
-  {% if not apps %}
-    <div class="jumbotron">
-      No Application has been uploaded yet!
-    </div>
-  {% endif %}
-
-  {% for app in apps %}
-    {% include "./app_shop.html" %}
-  {% endfor %}
-</div>
+{% for app in apps %}
+  {% include "./app_shop.html" %}
+{% endfor %}

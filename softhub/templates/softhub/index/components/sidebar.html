@@ -1,10 +1,16 @@
-<!-- This component is inside a col-md-3 -->
+<!--
+  Shows a panel sidebar containing categories.
+  This component is inside a col-md-3
+-->
+
 <div class="sidebar">
   <p class="lead">Categories:</p>
 
   <div class="list-group">
-    <a href="#" class="list-group-item">Category 1</a>
-    <a href="#" class="list-group-item">Category 2</a>
-    <a href="#" class="list-group-item">Category 3</a>
-  </div>
+  {% for c in categories  %}
+      <a href="#" class="list-group-item">
+        {{ c }}
+      </a>
+  {% endfor %}
+</div>
 </div>

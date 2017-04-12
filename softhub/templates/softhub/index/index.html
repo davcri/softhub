@@ -9,10 +9,14 @@
 
 {% block content %}
   <div class="row">
-    {% include "./components/app_list.html" %}
-  </div>
+    <br> <br>
 
-  <!-- <div class="row">
-     {#{% include "./components/os_list.html" %} #}
-  </div> -->
+    <div class="col-md-3">
+      {% include "./components/sidebar.html" %}
+    </div>
+
+    <div class="col-md-9">
+      {% include "./components/app_list.html" %}
+    </div>
+  </div>
 {% endblock %}
