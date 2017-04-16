@@ -1,15 +1,42 @@
-<section class="no-padding" id="portfolio">
+
+<!-- <section class="bg-primary" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">Ready to execute apps</h2>
+                <hr class="light">
+                <p class="text-faded">Softhub has everything you need to get your apps up and running in no time!</p>
+                <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+<br>
+
+<section class="no-padding" id="apps">
   <h2 class="section-heading text-center">Apps</h2>
   <hr>
-  
+
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 text-center">
+              <p>Softhub has everything you need to get your apps up and running in no time!</p>
+          </div>
+      </div>
+  </div>
+
   <div class="container-fluid">
       <div class="row no-gutter popup-gallery">
 
-        {# should limit to 6 app #}
-        {# should check the rendering for cold start #}
-        {% for app in apps  %}
-          {% include "./app_box.html" %}
-        {% endfor %}
+        {% if apps %}
+          {% for app in apps %}
+            {% include "./app_box.html" %}
+          {% endfor %}
+        {% else %}
+          <h3 class="text-center"> No Application stored </h3>
+        {% endif %}
+
 
       </div>
   </div>
