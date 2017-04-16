@@ -9,6 +9,15 @@ class SofthubIndex(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(SofthubIndex, self).get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
+
+        categories = Category.objects.all()
+        categories_apps_dict = {}
+        for c in categories:
+            app_count_for_category = len(
+                Application.objects.filter(category=c))
+            categories_apps_dict[c] = app_count_for_category
+
+        context['categories_apps_dict'] = categories_apps_dict
         context['apps'] = Application.objects.all()
+
         return context

@@ -7,10 +7,17 @@
   <p class="lead">Categories:</p>
 
   <div class="list-group">
-  {% for c in categories  %}
-      <a href="#" class="list-group-item">
-        {{ c }}
-      </a>
-  {% endfor %}
-</div>
+    {% for c, app_count in categories_apps_dict.items  %}
+        <a href="#" class="list-group-item">
+          {{ c }}
+          {% if app_count != 0 %}
+            <span class="badge">
+              {{ app_count }}
+            </span>
+          {% else %}
+            <span class="pull-right">---</span>
+          {% endif %}
+        </a>
+    {% endfor %}
+  </div>
 </div>
