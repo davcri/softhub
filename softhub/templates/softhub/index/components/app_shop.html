@@ -5,38 +5,38 @@
 <link rel="stylesheet" href="{% static 'softhub/css/app_shop.css'%}">
 
 <div class="col-sm-4 col-lg-4 col-md-4">
-    <div class="thumbnail">
-        <div class="fade-on-hover">
-            <a href="{% url 'softhub:app_detail' app.id %}">
-                <img src="{{ app.icon.url }}" alt="">
-            </a>
-        </div>
-
-        <div class="caption">
-            <p>
-              <a class="app_name" href="{% url 'softhub:app_detail' app.id %}">
-                {{ app.name }}
-              </a>
-
-              <span class="label label-default category_label pull-right">
-                {{ app.category }}
-              </span>
-            </p>
-
-            <p>
-                {{ app.description }}
-            </p>
-        </div>
-
-        <div class="ratings">
-            <p class="pull-right">15 reviews</p>
-            <p>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-            </p>
-        </div>
+  <div class="thumbnail">
+    <div class="fade-on-hover">
+      <a href="{% url 'softhub:app_detail' app.id %}">
+        <img src="{{ app.icon.url }}" alt="">
+      </a>
     </div>
+
+    <div class="caption">
+      <p>
+        <a class="app_name" href="{% url 'softhub:app_detail' app.id %}">
+          {{ app.name }}
+        </a>
+
+        <span class="label label-default category_label pull-right">
+          {{ app.category }}
+        </span>
+      </p>
+
+      <p>
+        {{ app.description }}
+      </p>
+    </div>
+
+    <div class="ratings">
+      <p class="pull-right">15 reviews</p>
+      <p>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+      </p>
+    </div>
+  </div>
 </div>

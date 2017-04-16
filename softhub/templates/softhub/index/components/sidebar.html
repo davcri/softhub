@@ -7,17 +7,25 @@
   <p class="lead">Categories:</p>
 
   <div class="list-group">
-    {% for c, app_count in categories_apps_dict.items  %}
-        <a href="#" class="list-group-item">
-          {{ c }}
-          {% if app_count != 0 %}
-            <span class="badge">
-              {{ app_count }}
-            </span>
-          {% else %}
-            <span class="pull-right">---</span>
-          {% endif %}
-        </a>
+    {% for c, app_count in categories_apps_dict.items %}
+      <a
+      href={% url 'softhub:index' %}?category={{ c }}
+      {% if c == current_category %}
+        class="list-group-item active">
+      {% else %}
+        class="list-group-item">
+      {% endif %}
+
+        {{ c }}
+
+        {% if app_count != 0 %}
+          <span class="badge">
+            {{ app_count }}
+          </span>
+        {% else %}
+          <span class="pull-right">---</span>
+        {% endif %}
+      </a>
     {% endfor %}
   </div>
 </div>
