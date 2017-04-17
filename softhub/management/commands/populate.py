@@ -108,7 +108,8 @@ class Command(BaseCommand):
 
         for c in categories_name:
             try:
+                c = c.title()  # capitalizes first letter of a string
                 Category.objects.create(name=c)
-                print("Category created")
+                print("Category created: ", c)
             except Exception as e:
                 self.printWarning(os, e)
