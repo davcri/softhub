@@ -9,6 +9,8 @@ from .models.Developer import Developer
 from .models.Version import Version
 from .models.Executable import Executable
 from .models.License import License
+from .models.Review import Review
+from .models.Rating import Rating
 
 
 admin.site.register(User)
@@ -19,3 +21,5 @@ admin.site.register(Category)
 admin.site.register(Version)
 admin.site.register(Executable)
 admin.site.register(License)
+admin.site.register(Review)
+admin.site.register(Rating)
