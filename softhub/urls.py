@@ -31,6 +31,11 @@ urlpatterns = [
         ApplicationDetail.as_view(),
         name='app_detail'),
 
+    # TODO view to show apps for category
+
+    ##################
+    # Create Views   #
+    ##################
     url(r'^upload/app/$',
         # Note: login is required, the check is done inside the
         # ApplicationUpload class with a decorator.
@@ -45,10 +50,14 @@ urlpatterns = [
         login_required(ExecutableUpload.as_view()),
         name='app_executable_upload'),
 
+    ##################
+    # Update Views   #
+    ##################
     url(r'^app/update/(?P<pk>[0-9]+)/$',
         login_required(ApplicationUpdate.as_view()),
         name='app_update'),
 
+    # TODO change in app/update/version/(?P<pk>[0-9]+)/$
     url(r'^app/version/(?P<pk>[0-9]+)/update$',
         login_required(VersionUpdate.as_view()),
         name='version_update'),
