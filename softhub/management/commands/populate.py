@@ -6,6 +6,7 @@ from softhub.models.User import User
 from softhub.models.Developer import Developer
 from softhub.models.License import License
 from softhub.models.Category import Category
+from softhub.models.Rating import Rating
 
 
 class Command(BaseCommand):
@@ -23,6 +24,7 @@ class Command(BaseCommand):
         self.create_common_users()
         self.create_licenses()
         self.create_categories()
+        self.create_ratings()
 
     def printWarning(self, obj1, exception):
         self.stderr.write("WARNING:" + str(obj1) + " not created.")
@@ -112,4 +114,12 @@ class Command(BaseCommand):
                 Category.objects.create(name=c)
                 print("Category created: ", c)
             except Exception as e:
-                self.printWarning(os, e)
+                self.printWarning(c, e)
+
+    def create_ratings(self):
+        for rating in Rating.choices:
+            try:
+                Rating.objects.create(value=rating[0])
+                print("Rating created: ", rating)
+            except Exception as e:
+                self.printWarning(rating, e)
