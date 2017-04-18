@@ -12,12 +12,17 @@ Web application to store applications.
 Run these commands from the project folder:
 
 ``` bash
+# create a directory for the virtualenv
+virtualenv ENV
+# activate the virtualenv
+source ENV/bin/activate
+# install python dependencies
 pip install -r requirements.txt
 
 # install bower if necessary
 npm install -g bower
 
-# install dependencies with bower
+# install web dependencies with bower
 bower install
 
 python manage.py runserver
@@ -31,3 +36,9 @@ The following files are used to store dependencies:
 ## Standard and conventions
 
 Code is written trying to follow PEP8 standard: https://www.python.org/dev/peps/pep-0008/
+
+## Management commands
+Generate models diagrams (you'll need Graphviz installed):
+``` bash
+python manage.py graph_models -a -o models.png
+```
