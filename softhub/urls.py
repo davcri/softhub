@@ -14,6 +14,7 @@ from .views.VersionUpload import VersionUpload
 from .views.ExecutableUpload import ExecutableUpload
 from .views.ExecutableUpdate import ExecutableUpdate
 from .views.UserCreation import UserCreation
+from .views.AboutTemplateView import AboutTemplateView
 
 
 app_name = 'softhub'
@@ -22,9 +23,15 @@ urlpatterns = [
     ##################
     # Template Views #
     ##################
-    url(r'^$',
+    url(
+        r'^$',
         SofthubIndex.as_view(),
         name='index'),
+
+    url(
+        r'^about$',
+        AboutTemplateView.as_view(),
+        name='about'),
 
     ##################
     # Detail Views   #
