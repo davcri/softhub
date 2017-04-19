@@ -19,10 +19,16 @@ from .views.UserCreation import UserCreation
 app_name = 'softhub'
 
 urlpatterns = [
+    ##################
+    # Template Views #
+    ##################
     url(r'^$',
         SofthubIndex.as_view(),
         name='index'),
 
+    ##################
+    # Detail Views   #
+    ##################
     url(r'^os/(?P<pk>[0-9]+)/$',
         OperatingSystemDetail.as_view(),
         name='os_detail'),
@@ -30,8 +36,6 @@ urlpatterns = [
     url(r'^app/(?P<pk>[0-9]+)/$',
         ApplicationDetail.as_view(),
         name='app_detail'),
-
-    # TODO view to show apps for category
 
     ##################
     # Create Views   #
@@ -43,7 +47,7 @@ urlpatterns = [
         name='app_upload'),
 
     url(r'^upload/app_version/(?P<pk>[0-9]+)$',
-        VersionUpload.as_view(),
+        login_required(VersionUpload.as_view()),
         name='app_version_upload'),
 
     url(r'^upload/app_executable/(?P<pk>[0-9]+)$',
@@ -57,12 +61,11 @@ urlpatterns = [
         login_required(ApplicationUpdate.as_view()),
         name='app_update'),
 
-    # TODO change in app/update/version/(?P<pk>[0-9]+)/$
-    url(r'^app/version/(?P<pk>[0-9]+)/update$',
+    url(r'^app/update/version/(?P<pk>[0-9]+)$',
         login_required(VersionUpdate.as_view()),
         name='version_update'),
 
-    url(r'^app/executable/(?P<pk>[0-9]+)/update$',
+    url(r'^app/update/executable/(?P<pk>[0-9]+)$',
         login_required(ExecutableUpdate.as_view()),
         name='executable_update'),
 ]
