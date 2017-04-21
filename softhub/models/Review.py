@@ -14,3 +14,18 @@ class Review(models.Model):
 
     def __str__(self):
         return (str(self.application) + ' review by ' + str(self.user))
+
+    @staticmethod
+    def userReviewedApplication(user, application):
+        """ Returns True if the user already reviewed the application.
+        """
+        user_reviews = Review.objects.filter(user=user)
+        applications_reviewed_by_current_user = \
+            user_reviews.values_list('application', flat=True)
+        # this link explains the use of flat=True
+        # https://docs.djangoproject.com/en/1.11/ref/models/querysets/#django.db.models.query.QuerySet.values_list
+
+        user_reviewed_app = False
+        if application.id in applications_reviewed_by_current_user:
+            user_reviewed_app = True
+        return user_reviewed_app

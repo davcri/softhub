@@ -61,55 +61,28 @@
     </div>
 
     <div class="well">
-      <div class="text-right">
-        <a class="btn btn-success">Leave a Review</a>
-      </div>
 
       <hr>
 
       <div class="row">
         <div class="col-md-12">
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-          Anonymous
-          <span class="pull-right">10 days ago</span>
-          <p>This product was great in terms of quality. I would definitely buy another!</p>
+          <form action="" method="post">
+            {% csrf_token %}
+            {% load crispy_forms_tags %}
+            {{ form|crispy }}
+
+            <div class="text-right">
+              <input type="submit" value="Leave a Review" class="btn btn-success">
+            </div>
+
+          </form>
         </div>
       </div>
 
-      <hr>
-
-      <div class="row">
-        <div class="col-md-12">
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-          Anonymous
-
-          <span class="pull-right">12 days ago</span>
-          <p>I've alredy ordered another one!</p>
-        </div>
-      </div>
-
-      <hr>
-
-      <div class="row">
-        <div class="col-md-12">
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star"></span>
-          <span class="glyphicon glyphicon-star-empty"></span>
-          Anonymous
-          <span class="pull-right">15 days ago</span>
-          <p>I've seen some better than this, but not at this price. I definitely recommend this item.</p>
-        </div>
-      </div>
+      {% for review in reviews %}
+        <hr>
+        {% include "./components/app_review.html" %}
+      {% endfor %}
 
     </div>
   </div>
