@@ -101,4 +101,5 @@ class ApplicationDetail(DetailView):
         if context['avg_rating']:
             context['rounded_avg_rating'] = round(context['avg_rating'])
 
+        context['user_reviewed_app'] = Review.userReviewedApplication(self.request.user, app)
         return context

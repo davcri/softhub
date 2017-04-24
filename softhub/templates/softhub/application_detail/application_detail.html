@@ -70,28 +70,32 @@
     </div>
 
     <div class="well">
+      {% if user.is_authenticated and not user_reviewed_app %}
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <form action="" method="post">
+              {% csrf_token %}
+              {% load crispy_forms_tags %}
+              {{ form|crispy }}
 
-      <hr>
+              <div class="text-right">
+                <input type="submit" value="Leave a Review" class="btn btn-success">
+              </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <form action="" method="post">
-            {% csrf_token %}
-            {% load crispy_forms_tags %}
-            {{ form|crispy }}
-
-            <div class="text-right">
-              <input type="submit" value="Leave a Review" class="btn btn-success">
-            </div>
-
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
+      {% endif %}
 
-      {% for review in reviews %}
+      {% if reviews %}
+        {% for review in reviews %}
         <hr>
         {% include "./components/app_review.html" %}
-      {% endfor %}
+        {% endfor %}
+      {% else %}
+        No reviews for {{ app }}
+      {% endif %}
 
     </div>
   </div>
