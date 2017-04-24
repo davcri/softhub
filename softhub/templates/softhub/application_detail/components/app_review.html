@@ -13,7 +13,8 @@
       {% endif %}
     {% endfor %}
 
-    <span class="pull-right">10 days ago HC!</span>
+    {# Show as a date or as a delta ? Eg: "21 December 2017" or "3 days ago" ?#}
+    <span class="pull-right"> {{ review.date }} </span>
 
     <p>
       {{ review.text }}

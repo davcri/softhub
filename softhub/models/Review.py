@@ -11,6 +11,7 @@ class Review(models.Model):
     application = models.ForeignKey(Application)
     user = models.ForeignKey(User)
     rating = models.ForeignKey(Rating)
+    date = models.DateField(auto_now=True)
 
     def __str__(self):
         return (str(self.application) + ' review by ' + str(self.user))
