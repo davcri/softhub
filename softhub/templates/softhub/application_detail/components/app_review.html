@@ -4,14 +4,14 @@
       {{ review.user }}
     </strong>
 
-    {{ review.rating }}
-    <!--
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star"></span>
-    <span class="glyphicon glyphicon-star-empty"></span>
-    -->
+    {% load extra_tags_and_filters %}
+    {% for star in 5|times %}
+      {% if star <= review.rating.value %}
+        <span class="glyphicon glyphicon-star"></span>
+      {% else %}
+        <span class="glyphicon glyphicon-star-empty"></span>
+      {% endif %}
+    {% endfor %}
 
     <span class="pull-right">10 days ago HC!</span>
 
