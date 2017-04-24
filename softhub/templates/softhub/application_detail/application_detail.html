@@ -29,14 +29,23 @@
         </p>
 
         <div class="ratings">
-          <p class="pull-right">3 reviews</p>
-          <p>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star"></span>
-            <span class="glyphicon glyphicon-star-empty"></span>
-            4.0 stars
+          {% load extra_tags_and_filters %}
+
+          {# TODO remove hardcoded value! Also in app_review.html #}
+          {% for star in 5|times %}
+            {% if star <= rounded_avg_rating|default:0  %}
+              <span class="glyphicon glyphicon-star"></span>
+            {% else %}
+              <span class="glyphicon glyphicon-star-empty"></span>
+            {% endif %}
+          {% endfor %}
+          {% if avg_rating %}
+          {{ avg_rating }} stars <br>
+          {% endif %}
+
+
+          <p class="pull-right">
+            {{ app.getReviewCount }} reviews
           </p>
         </div>
 

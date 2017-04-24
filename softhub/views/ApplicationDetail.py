@@ -96,6 +96,9 @@ class ApplicationDetail(DetailView):
 
         context['form'] = ReviewForm()
         context['reviews'] = Review.objects.filter(application=self.get_object())
-        # context['other_executables'] =
+
+        context['avg_rating'] = app.getAverageRating()
+        if context['avg_rating']:
+            context['rounded_avg_rating'] = round(context['avg_rating'])
 
         return context

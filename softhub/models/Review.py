@@ -1,14 +1,15 @@
 from django.db import models
+from django.db.models import Avg
 
 from softhub.models.User import User
 from softhub.models.Rating import Rating
-from softhub.models.Application import Application
+# from softhub.models.Application import Application
 
 
 class Review(models.Model):
     # title = models.CharField(max_length=100)
     text = models.TextField()
-    application = models.ForeignKey(Application)
+    application = models.ForeignKey('Application')
     user = models.ForeignKey(User)
     rating = models.ForeignKey(Rating)
     date = models.DateField(auto_now=True)
@@ -30,3 +31,24 @@ class Review(models.Model):
         if application.id in applications_reviewed_by_current_user:
             user_reviewed_app = True
         return user_reviewed_app
+
+    @staticmethod
+    def getAverageRating(application):
+        """ Returns the average of all ratings or "None" if
+        no review has been published for the given application.
+        """
+        app_reviews = Review.objects.filter(application=application)
+        if app_reviews:  # there is at least one review
+            avg_rating = app_reviews.aggregate(Avg('rating'))
+            avg_rating = avg_rating.get('rating__avg')
+            avg_rating = round(avg_rating, 1)
+        else:  # no review
+            avg_rating = None
+        return avg_rating
+
+    @staticmethod
+    def getReviewCount(application):
+        """ Return the review count for the given application.
+        """
+        app_count = len(Review.objects.filter(application=application))
+        return app_count
