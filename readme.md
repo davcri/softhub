@@ -9,6 +9,10 @@ Web application to store applications.
 - [bower](https://bower.io/): to handle dependencies found in bower.json
 
 ## Install and Run
+For detailed install instructions, see
+[the wiki page](https://gitlab.com/davcri91/softhub-site/wikis/installation-guide),
+otherwise read the following **installation Overview**.  
+
 Run these commands from the project folder:
 
 ``` bash
@@ -25,6 +29,15 @@ npm install -g bower
 # install web dependencies with bower
 bower install
 
+# run migrations
+python manage.py migrate
+
+# run a custom Sothub command to iniialize the database
+# https://gitlab.com/davcri91/softhub-site/blob/master/softhub/management/commands/populate.py
+python manage.py populate
+
+
+# runs the local development server
 python manage.py runserver
 ```
 
