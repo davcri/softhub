@@ -1,4 +1,16 @@
-*.pyc
+# Python byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# virtualenv
+ENV/
+
+# python manage.py can create Models .svg graph with Django_extensions
+*.svg
+*.png
+
+# sqlite3 DB file
 *.sqlite3
 
 # upload dir
@@ -6,6 +18,3 @@ softhub/uploads/*
 
 # bower directory
 softhub/static/bower-components/*
-
-# python manage.py can create Models .svg graph with Django_extensions 
-*.svg
