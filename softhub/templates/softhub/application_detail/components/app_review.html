@@ -4,14 +4,7 @@
       {{ review.user }}
     </strong>
 
-    {% load extra_tags_and_filters %}
-    {% for star in 5|times %}
-      {% if star <= review.rating.value %}
-        <span class="glyphicon glyphicon-star"></span>
-      {% else %}
-        <span class="glyphicon glyphicon-star-empty"></span>
-      {% endif %}
-    {% endfor %}
+    {% include "./rating.html" %}
 
     {# Show as a date or as a delta ? Eg: "21 December 2017" or "3 days ago" ?#}
     <span class="pull-right"> {{ review.date }} </span>

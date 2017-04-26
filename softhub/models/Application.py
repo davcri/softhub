@@ -69,6 +69,9 @@ class Application(models.Model):
     def getAverageRating(self):
         return Review.getAverageRating(self)
 
+    def getRoundedAverageRating(self):
+        return round(self.getAverageRating())
+
     def getReviewCount(self):
         return Review.getReviewCount(self)
 

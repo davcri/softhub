@@ -19,33 +19,21 @@
 
       <div class="caption-full">
 
-        <h4 class="pull-right"> {{ app.developer }}</h4>
         <h4>
           {{ app.name }}
         </h4>
+        <h4 class="pull-right"> {{ app.developer }}</h4>
 
         <p>
           {{ app.description }}
         </p>
 
         <div class="ratings">
-          {% load extra_tags_and_filters %}
 
-          {# TODO remove hardcoded value! Also in app_review.html #}
-          {% for star in 5|times %}
-            {% if star <= rounded_avg_rating|default:0  %}
-              <span class="glyphicon glyphicon-star"></span>
-            {% else %}
-              <span class="glyphicon glyphicon-star-empty"></span>
-            {% endif %}
-          {% endfor %}
-          {% if avg_rating %}
-          {{ avg_rating }} stars <br>
-          {% endif %}
-
+          {% include "./components/rating.html" with showNumericRating=True %}
 
           <p class="pull-right">
-            {{ app.getReviewCount }} reviews
+            {{ app.getReviewCount }} review{{ app.getReviewCount|pluralize }}
           </p>
         </div>
 
