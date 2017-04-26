@@ -1,0 +1,17 @@
+<!--
+  Displays a numeric rating in stars.
+-->
+
+{% load extra_tags_and_filters %}
+
+{# TODO remove hardcoded value! Also in app_review.html #}
+{% for star in 5|times %}
+  {% if star <= app.getRoundedAverageRating|default:0  %}
+    <span class="glyphicon glyphicon-star"></span>
+  {% else %}
+    <span class="glyphicon glyphicon-star-empty"></span>
+  {% endif %}
+{% endfor %}
+{% if app.getAverageRating and showNumericRating %}
+  {{ app.getAverageRating }} stars <br>
+{% endif %}

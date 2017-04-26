@@ -29,13 +29,11 @@
     </div>
 
     <div class="ratings">
-      <p class="pull-right">15 reviews</p>
+      {% with app.getReviewCount as reviewCount %}
+        <p class="pull-right">{{ reviewCount }} review{{reviewCount|pluralize}}</p>
+      {% endwith %}
       <p>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
+        {% include "../../application_detail/components/rating.html" with showNumericRating=False %}
       </p>
     </div>
   </div>

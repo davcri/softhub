@@ -37,5 +37,4 @@ class SofthubIndex(TemplateView):
                 category=self.category)
         else:
             context['apps'] = Application.objects.all()
-
         return context

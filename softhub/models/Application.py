@@ -2,6 +2,7 @@ from django.db import models
 
 from softhub.models.Version import Version
 from softhub.models.Executable import Executable
+from softhub.models.Review import Review
 from softhub.models.Category import Category
 
 
@@ -64,6 +65,15 @@ class Application(models.Model):
         """
         from django.urls import reverse
         return reverse('softhub:app_detail', kwargs={'pk': self.id})
+
+    def getAverageRating(self):
+        return Review.getAverageRating(self)
+
+    def getRoundedAverageRating(self):
+        return round(self.getAverageRating())
+
+    def getReviewCount(self):
+        return Review.getReviewCount(self)
 
     # def get_non_latest_executables(self):
     #     q1 = Executable.objects.all()
