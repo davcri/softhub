@@ -1,18 +1,20 @@
 # Softhub
 
-Web application to store applications.
+Demonstrative web application written in modern __Python 3__ using
+[Django Web Framework](https://www.djangoproject.com/).
 
 
-## Requirements
-- python (pip): to install Django and other apps like Django REST Framework
-- npm: to install bower
+## Development requirements
+- [python](https://www.python.org/): to install Django and its modules
+- [npm](https://www.npmjs.com/): required by _bower_
 - [bower](https://bower.io/): to handle dependencies found in bower.json
 
-## Install and Run
+## Set up a local development environment
 For detailed install instructions, see
 [the wiki page](https://gitlab.com/davcri91/softhub-site/wikis/installation-guide),
 otherwise read the following **installation Overview**.  
 
+**Note**: this guide is tested on Arch Linux that use python3.x as default.  
 Run these commands from the project folder:
 
 ``` bash
