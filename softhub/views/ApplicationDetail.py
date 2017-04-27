@@ -96,7 +96,7 @@ class ApplicationDetail(DetailView):
 
         context['form'] = ReviewForm()
         context['reviews'] = \
-            Review.objects.filter(application=self.get_object())
+            Review.objects.filter(application=self.get_object()).order_by('-date')
         context['user_reviewed_app'] = \
             Review.userReviewedApplication(self.request.user, app)
 
