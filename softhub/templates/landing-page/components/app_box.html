@@ -1,15 +1,14 @@
 <div class="col-lg-4 col-sm-6">
-    <a href={% url 'softhub:app_detail' pk=app.id %} class="portfolio-box">
-        <img src={{ app.icon.url }} class="img-responsive center-block fixed-img-size" alt="">
-        <div class="portfolio-box-caption">
-            <div class="portfolio-box-caption-content">
-                <div class="project-category text-faded">
-                    Dev - {{ app.developer }}
-                </div>
-                <div class="project-name">
-                    {{ app.name }}
-                </div>
-            </div>
+  <a href={% url 'softhub:app_detail' pk=app.id %} class="portfolio-box">
+    <img src={{ app.icon.url }} class="img-responsive center-block fixed-img-size" alt="">
+    <div class="portfolio-box-caption">
+      <div class="portfolio-box-caption-content">
+        <div class="project-category text-faded">
+          <div class="project-name">
+            {{ app.name }}
+          </div>
         </div>
-    </a>
+      </div>
+    </div>
+  </a>
 </div>
