@@ -57,37 +57,26 @@
 
     </div>
 
+    {# Reviews section #}
     <div class="well">
-      {% if user.is_authenticated and not user_reviewed_app %}
-        <hr>
-        <div class="row">
-          <div class="col-md-12">
-            <form action="" method="post">
-              {% csrf_token %}
-              {% load crispy_forms_tags %}
-              {{ form|crispy }}
-
-              <div class="text-right">
-                <input type="submit" value="Leave a Review" class="btn btn-success">
-              </div>
-
-            </form>
+      <div class="row">
+        {% if user.is_authenticated and not user_reviewed_app %}
+          <div class="col-md-6">
+            {% include "./components/review_form.html" %}
           </div>
-        </div>
-      {% endif %}
-
-      {% if reviews %}
-        {% for review in reviews %}
-        <hr>
-        {% include "./components/app_review.html" %}
-        {% endfor %}
-      {% else %}
-        No reviews for {{ app }}
-      {% endif %}
-
+          <div class="col-md-6">
+            {% include "./components/reviews_list.html" %}
+          </div>
+        {% else %}
+          <div class="col-md-12">
+            {% include "./components/reviews_list.html" %}
+          </div>
+        {% endif %}
+      </div>
     </div>
   </div>
 
+  {# Suggested items section #}
   <div class="col-md-2">
     Suggested items
   </div>
