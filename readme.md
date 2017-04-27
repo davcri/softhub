@@ -47,7 +47,6 @@ The following files are used to store dependencies:
 `.bower.rc`: configuration file for bower, used to tell bower where to store dependencies
 
 ## Standard and conventions
-
 Code is written trying to follow PEP8 standard: https://www.python.org/dev/peps/pep-0008/
 
 ## Management commands
@@ -55,3 +54,9 @@ Generate models diagrams (you'll need Graphviz installed):
 ``` bash
 python manage.py graph_models -a -o models.png
 ```
+
+## Thanks
+I used and modified the following templates (all MIT-licensed) :
+- https://github.com/BlackrockDigital/startbootstrap-creative
+- https://github.com/BlackrockDigital/startbootstrap-shop-homepage
+- https://github.com/BlackrockDigital/startbootstrap-shop-item
