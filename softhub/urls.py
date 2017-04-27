@@ -102,7 +102,8 @@ router.register(r'version', VersionViewSet)
 router.register(r'executable', ExecutableViewSet)
 router.register(r'developer', DeveloperViewSet)
 
-urlpatterns += [
-    url(r'^api/',
-        include(router.urls)),
-]
+# DISABLED REST API for the moment
+# urlpatterns += [
+#     url(r'^api/',
+#         include(router.urls)),
+# ]
