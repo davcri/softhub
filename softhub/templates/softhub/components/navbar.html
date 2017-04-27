@@ -10,32 +10,36 @@
       <a class="navbar-brand" href={% url "softhub:index" %}> SoftHub </a>
     </div>
 
+    <form action={% url 'softhub:search' %} method="get" class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" name="q" class="form-control" placeholder="Search">
+      </div>
+    </form>
+
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li><a href="{% url 'softhub:about' %}">About <i class="glyphicon glyphicon-info-sign" aria-hidden="true"></i></a></li>
-        <!-- <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li> -->
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         {% if user.is_authenticated %}
-          <li role="presentation" class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        <li role="presentation" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
               {{ user }} <span class="caret"></span>
             </a>
 
-            <ul class="dropdown-menu">
-              {% if user.isDeveloper and user.is_authenticated %}
-                <li><a href={% url 'softhub:app_upload' %}> Upload App <span class="glyphicon glyphicon-plus"></span> </a></li>
-              {% endif %}
-              <li class="disabled"><a href="#">User page</a></li>
-              <li><a href={% url 'softhub:logout' %}>Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
-            </ul>
-          </li>
+          <ul class="dropdown-menu">
+            {% if user.isDeveloper and user.is_authenticated %}
+            <li><a href={% url 'softhub:app_upload' %}> Upload App <span class="glyphicon glyphicon-plus"></span> </a></li>
+            {% endif %}
+            <li class="disabled"><a href="#">User page</a></li>
+            <li><a href={% url 'softhub:logout' %}>Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
+          </ul>
+        </li>
         {% else %}
-          <li role="presentation">
-            <a href={% url 'softhub:login' %}> Sign In <span class="glyphicon glyphicon-log-in"></span></a>
-          </li>
+        <li role="presentation">
+          <a href={% url 'softhub:login' %}> Sign In <span class="glyphicon glyphicon-log-in"></span></a>
+        </li>
         {% endif %}
       </ul>
 

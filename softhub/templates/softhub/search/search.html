@@ -1,0 +1,36 @@
+{% extends 'softhub/base.html' %}
+
+
+{% block title %}
+  <title> Search: "{{ search_query }}" </title>
+{% endblock %}
+
+<!-- Load the CSS file associated with this page -->
+{% block stylesheets %}
+  {# {% load staticfiles %}#}
+  {# <link rel="stylesheet" href="{% static "css/index.css" %}">#}
+{% endblock stylesheets %}
+
+
+{% block content %}
+  <div class="row">
+
+
+    <div class="col-md-12">
+      <div class="well">
+        <strong>
+          {{ apps|length }} Result{{ apps|pluralize }} for "{{ search_query }}"
+        </strong>
+        <br>
+      </div>
+    </div>
+
+    {# <div class="col-md-3">#}
+      {# {% include "./components/sidebar.html" %}#}
+    {# </div>#}
+
+    <div class="col-md-offset-1 col-md-10 ">
+      {% include "../index/components/app_list.html" %}
+    </div>
+  </div>
+{% endblock %}
