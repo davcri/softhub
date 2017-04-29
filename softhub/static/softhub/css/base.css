@@ -3,6 +3,10 @@
   softhub/templates/softhub/base.html
 */
 
+html, body {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .gray-background {
   background-color: rgb(230, 230, 230);
 }
@@ -11,8 +15,9 @@
   background-color: rgb(250, 250, 250);
   border-radius: 4px;
   padding: 2.2em;
-  /*font-size: 1em;*/
+  box-shadow: rgb(0, 24, 24) 0px 0px 1px
 }
+
 
 .fixed-img-size {
   height: 100px;

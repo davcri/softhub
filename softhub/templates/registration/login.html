@@ -1,50 +1,52 @@
 {% extends "softhub/base.html" %}
 
 {% block content %}
-
-  <!--
-    If "next" is defined, the user has been redirected to the login url, in order
-    to authenticate.
-    For example: http://127.0.0.1:8000/softhub/login/?next=/softhub/upload/app/
-  -->
-  {% if next %}
-    <div class="panel panel-warning">
-      <div class="panel-heading">
-        Login Required
-      </div>
-      <div class="panel-body">
-
-        {% if user.is_authenticated %}
-        <p>Your account doesn't have access to this page. To proceed,
-        please login with an account that has access.</p>
-        {% else %}
-        <p>Please login to see this page.</p>
-        {% endif %}
-
-      </div>
-    </div>
-  {% endif %}
-
-  <form class="" action="{% url 'softhub:login' %}" method="post">
-    {% csrf_token %}
-    {% load crispy_forms_tags %}
-    {{ form|crispy }}
-    <button type="submit" name="button" class="btn btn-default">Sign In</button>
-
+  <div class="col-md-4 col-md-offset-4 white-background">
     <!--
-      If next is defined, contains the url to redirect after the login.
-      Django will redirect to this value.
-      Note that URLs that have a login_required decorator, will automatically
-      populate this value. See ApplicationUpload for example.
+      If "next" is defined, the user has been redirected to the login url, in order
+      to authenticate.
+      For example: http://127.0.0.1:8000/softhub/login/?next=/softhub/upload/app/
     -->
-    <input type="hidden" name="next" value="{{ next }}" />
+    {% if next %}
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          Login Required
+        </div>
+        <div class="panel-body">
 
-    {# Assumes you setup the password_reset view in your URLconf #}
-    <p>
-      <a class="btn disabled" href="{% url 'softhub:password_reset' %}">Lost password?</a>
-      <br>
-      <a class="btn" href="{% url 'softhub:create_user' %}">New to the site? Create a new account</a>
-    </p>
-  </form>
+          {% if user.is_authenticated %}
+          <p>Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.</p>
+          {% else %}
+          <p>Please login to see this page.</p>
+          {% endif %}
 
+        </div>
+      </div>
+    {% endif %}
+
+    <form class="" action="{% url 'softhub:login' %}" method="post">
+      {% csrf_token %}
+      {% load crispy_forms_tags %}
+      {{ form|crispy }}
+      <button type="submit" name="button" class="btn btn-default">Sign In</button>
+
+      <!--
+        If next is defined, contains the url to redirect after the login.
+        Django will redirect to this value.
+        Note that URLs that have a login_required decorator, will automatically
+        populate this value. See ApplicationUpload for example.
+      -->
+      <input type="hidden" name="next" value="{{ next }}" />
+
+      <hr>
+      
+      {# Assumes you setup the password_reset view in your URLconf #}
+      <p>
+        <a class="btn disabled" href="{% url 'softhub:password_reset' %}">Lost password?</a>
+        <br>
+        <a class="btn" href="{% url 'softhub:create_user' %}">New to the site? Create a new account</a>
+      </p>
+    </form>
+  </div>
 {% endblock %}
