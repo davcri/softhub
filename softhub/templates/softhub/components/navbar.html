@@ -32,7 +32,7 @@
             {% if user.isDeveloper and user.is_authenticated %}
             <li><a href={% url 'softhub:app_upload' %}> Upload App <span class="glyphicon glyphicon-plus"></span> </a></li>
             {% endif %}
-            <li class="disabled"><a href="#">User page</a></li>
+            <li><a href={% url 'softhub:user_profile' %}> User page <span class="glyphicon glyphicon-user"></span> </a></li>
             <li><a href={% url 'softhub:logout' %}>Logout <span class="glyphicon glyphicon-log-out"></span></a></li>
           </ul>
         </li>

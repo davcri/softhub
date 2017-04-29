@@ -16,6 +16,7 @@ from .views.ExecutableUpdate import ExecutableUpdate
 from .views.UserCreation import UserCreation
 from .views.AboutTemplateView import AboutTemplateView
 from .views.SearchView import SearchView
+from .views.UserProfile import UserProfile
 
 app_name = 'softhub'
 
@@ -37,6 +38,12 @@ urlpatterns = [
         r'^search/$',
         SearchView.as_view(),
         name='search'),
+
+    url(
+        r'^user/$',
+        login_required(UserProfile.as_view()),
+        name='user_profile'
+    ),
 
     ##################
     # Detail Views   #
