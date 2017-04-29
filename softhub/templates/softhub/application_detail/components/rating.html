@@ -1,17 +1,22 @@
 <!--
   Displays a numeric rating in stars.
+
+  Use this template by setting a "rating" context variable or passing this value
+  like that:
+  {# {% include "../path/to/rating.html" with rating=app.getAverageRating showNumericRating=False %} #}
 -->
 
 {% load extra_tags_and_filters %}
 
 {# TODO remove hardcoded value! Also in app_review.html #}
 {% for star in 5|times %}
-  {% if star <= app.getRoundedAverageRating|default:0  %}
+  {% if star <= rating|to_int %}
     <span class="glyphicon glyphicon-star"></span>
   {% else %}
     <span class="glyphicon glyphicon-star-empty"></span>
   {% endif %}
 {% endfor %}
-{% if app.getAverageRating and showNumericRating %}
-  {{ app.getAverageRating }} stars <br>
+
+{% if rating and showNumericRating %}
+  {{ rating }} stars <br>
 {% endif %}

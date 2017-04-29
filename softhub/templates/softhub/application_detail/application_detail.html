@@ -30,7 +30,7 @@
 
         <div class="ratings">
 
-          {% include "./components/rating.html" with showNumericRating=True %}
+          {% include "./components/rating.html" with rating=app.getAverageRating showNumericRating=True %}
 
           <p class="pull-right">
             {{ app.getReviewCount }} review{{ app.getReviewCount|pluralize }}

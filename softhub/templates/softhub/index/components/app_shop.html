@@ -33,7 +33,7 @@
         <p class="pull-right">{{ reviewCount }} review{{reviewCount|pluralize}}</p>
       {% endwith %}
       <p>
-        {% include "../../application_detail/components/rating.html" with showNumericRating=False %}
+        {% include "../../application_detail/components/rating.html" with rating=app.getAverageRating showNumericRating=False %}
       </p>
     </div>
   </div>

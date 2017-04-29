@@ -5,7 +5,7 @@
         {{ review.user }}
       </strong>
 
-      {% include "./rating.html" %}
+      {% include "./rating.html" with rating=review.rating.value %}
 
       {# Show as a date or as a delta ? Eg: "21 December 2017" or "3 days ago" ?#}
       <span class="pull-right"> {{ review.date }} </span>
