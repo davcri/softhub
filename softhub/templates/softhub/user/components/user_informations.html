@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Informations
+  </div>
+
+  <div class="panel-body">
+
+    <dl class="dl-horizontal">
+      <dt>Username:</dt>
+      <dd>{{ user.username }}</dd>
+
+      <dt>email:</dt>
+      <dd>{{ user.email|default:'...' }}</dd>
+
+      <dt>Registered on:</dt>
+      <dd>{{ user.date_joined }}</dd>
+
+    </dl>
+  </div>
+
+</div>
