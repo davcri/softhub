@@ -1,16 +1,14 @@
 from django.db import models
 from django.db.models import Avg
 
-from softhub.models.User import User
 from softhub.models.Rating import Rating
-# from softhub.models.Application import Application
 
 
 class Review(models.Model):
     # title = models.CharField(max_length=100)
     text = models.TextField()
     application = models.ForeignKey('Application')
-    user = models.ForeignKey(User)
+    user = models.ForeignKey('User')
     rating = models.ForeignKey(Rating)
     date = models.DateField(auto_now=True)
 
@@ -52,3 +50,17 @@ class Review(models.Model):
         """
         app_count = len(Review.objects.filter(application=application))
         return app_count
+
+    @staticmethod
+    def getReviewsByUser(user):
+        """ Return the reviews made by the given user.
+        """
+        user_reviews = Review.objects.filter(user=user).order_by('-date')
+        return user_reviews
+
+    # @staticmethod
+    # def getReviewedAppsByUser(user):
+    #     """ Return the applications reviewed by the given user.
+    #     """
+    #     user_reviews = Review.objects.filter(user=user)
+    #     return user_reviews

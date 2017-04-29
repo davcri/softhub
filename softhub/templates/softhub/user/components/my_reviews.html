@@ -4,7 +4,33 @@
   </div>
 
   <div class="panel-body">
-    
+    {% for review in reviewed_apps %}
+      <div class="row">
+        <div class="col-md-2 text-center">
+          {{ review }} on {{ review.date }}
+        </div>
+
+        <div class="col-md-3 text-center">
+          <span class="little-padding">
+            <a href="{% url 'softhub:app_detail' review.application.id %}">
+              {{ review.text }}
+            </a>
+          </span>
+        </div>
+
+        <div class="col-md-3 text-center">
+          <span class="little-padding">
+            {{ review.rating }}
+            {% include "../../application_detail/components/rating2.html" with rating=review.rating.value %}
+          </span>
+        </div>
+
+        <div class="col-md-3 text-center">
+          {# <button type="button" name="button" class="btn btn-warning"> Edit </button> #}
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
 
   </div>
 

@@ -2,6 +2,7 @@ from django.views.generic import TemplateView
 
 from softhub.models.Application import Application
 from softhub.models.Developer import Developer
+from softhub.models.Review import Review
 
 
 class UserProfile(TemplateView):
@@ -15,5 +16,7 @@ class UserProfile(TemplateView):
             dev = Developer.objects.get(user_id=user)
             apps = Application.objects.filter(developer=dev)
             context['apps'] = apps
+
+        context['reviewed_apps'] = Review.getReviewsByUser(self.request.user)
 
         return context
