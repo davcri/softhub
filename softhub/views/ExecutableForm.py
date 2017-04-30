@@ -10,8 +10,10 @@ class ExecutableForm(ModelForm):
         exclude = []
 
     def clean(self):
-        """ Method ovverride to allow the upload of only one executable for a
-        given operating system.
+        """ Method ovverride to prevent the upload of more than one executable
+        for a given operating system.
+        Shows an error in the form if the executable for the given
+        version-application already exists.
         """
         # TODO this could be handled via AJAX on client side.
 
