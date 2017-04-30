@@ -11,6 +11,7 @@ class ApplicationUpdate(UpdateView):
     model = Application
     form_class = ApplicationForm
     template_name = 'softhub/application_form/application_update_form.html'
+    context_object_name = 'app'
     # template_name_suffix = '_update_form'
     # success_url = reverse_lazy('softhub:index')
 

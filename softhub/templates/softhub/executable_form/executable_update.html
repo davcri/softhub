@@ -6,16 +6,24 @@
 
 
 {% block content %}
-  <form action="" %}
-        method="post"/
-        enctype="multipart/form-data">
+  <div class="white-background col-md-12">
 
-    {% csrf_token %}
+    <h3>
+      <img src="{{ executable.version.application.icon.url }}" class="fixed-small-img-size" alt="">
+      {{ executable.version.application.name }}: update details
+    </h3>
+    <br> <br>
 
-    {% load crispy_forms_tags %}
-    {{ form|crispy }}
+    <form action="" %}
+          method="post"/
+          enctype="multipart/form-data">
 
-    <input type="submit" value="Submit" class="btn btn-default">
-  </form>
+      {% csrf_token %}
 
+      {% load crispy_forms_tags %}
+      {{ form|crispy }}
+
+      <input type="submit" value="Submit" class="btn btn-default">
+    </form>
+  </div>
 {% endblock %}

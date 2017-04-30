@@ -6,16 +6,24 @@
 
 
 {% block content %}
-  <form action="{% url 'softhub:app_executable_upload' app.id %}"
-        method="post"/
-        enctype="multipart/form-data">
+  <div class="white-background col-md-12">
 
-    {% csrf_token %}
+    <h3>
+      <img src="{{ app.icon.url }}" class="fixed-small-img-size" alt="">
+      {{ app.name }}: new executable
+    </h3>
+    <br> <br>
 
-    {% load crispy_forms_tags %}
-    {{ form|crispy }}
+    <form action="{% url 'softhub:app_executable_upload' app.id %}"
+          method="post"/
+          enctype="multipart/form-data">
 
-    <input type="submit" value="Submit" class="btn btn-default">
-  </form>
+      {% csrf_token %}
 
+      {% load crispy_forms_tags %}
+      {{ form|crispy }}
+
+      <input type="submit" value="Submit" class="btn btn-default">
+    </form>
+  </div>
 {% endblock %}
