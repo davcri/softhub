@@ -9,6 +9,8 @@
     <h1> {{ user }} profile </h1>
     <br><br>
 
+    <a href="{% url 'softhub:user_update' user.id %}"> Update user details </a>
+
     {% include "./components/user_informations.html" %}
 
     {% if user.isDeveloper %}
