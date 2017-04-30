@@ -17,6 +17,8 @@ from .views.UserCreation import UserCreation
 from .views.AboutTemplateView import AboutTemplateView
 from .views.SearchView import SearchView
 from .views.UserProfile import UserProfile
+from .views.UserUpdate import UserUpdate
+
 
 app_name = 'softhub'
 
@@ -87,6 +89,10 @@ urlpatterns = [
     url(r'^app/update/executable/(?P<pk>[0-9]+)$',
         login_required(ExecutableUpdate.as_view()),
         name='executable_update'),
+
+    url(r'^user/update/(?P<pk>[0-9]+)/$',
+        login_required(UserUpdate.as_view()),
+        name='user_update'),
 ]
 
 

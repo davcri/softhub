@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    My Applications
+  </div>
+
+  <div class="panel-body">
+    {% for app in apps %}
+      <div class="row">
+        <div class="col-md-2 text-center">
+          <img class="fixed-small-img-size"
+               src="{{ app.icon.url }}"
+               alt="{{app}} icon">
+        </div>
+
+        <div class="col-md-3 text-center">
+          <span class="little-padding">
+            <a href="{% url 'softhub:app_detail' app.id %}">
+              {{ app.name }}
+            </a>
+          </span>
+        </div>
+
+        <div class="col-md-3 text-center">
+          <span class="little-padding">
+            {{ app.description }}
+          </span>
+        </div>
+
+        <div class="col-md-3 text-center">
+          {# <button type="button" name="button" class="btn btn-warning"> Edit </button> #}
+        </div>
+      </div>
+      <hr>
+    {% endfor %}
+  </div>
+</div>

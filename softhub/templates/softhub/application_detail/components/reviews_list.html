@@ -1,11 +1,11 @@
 {% if reviews %}
   {% for review in reviews %}
-    <div class="col-md-12">
+    <div class="col-md-12" id={{ review.id }}>
       <strong>
         {{ review.user }}
       </strong>
 
-      {% include "./rating.html" %}
+      {% include "./rating.html" with rating=review.rating.value %}
 
       {# Show as a date or as a delta ? Eg: "21 December 2017" or "3 days ago" ?#}
       <span class="pull-right"> {{ review.date }} </span>

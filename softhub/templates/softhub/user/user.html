@@ -1,11 +1,24 @@
 {% extends "softhub/base.html" %}
 
 {% block title %}
-<title>{{ user }} User profile</title>
+  <title> {{ user }} profile </title>
 {% endblock title %}
 
 {% block content %}
   <div class="white-background">
+    <h1> {{ user }} profile </h1>
+    <br><br>
+
+    <a href="{% url 'softhub:user_update' user.id %}"> Update user details </a>
+
+    {% include "./components/user_informations.html" %}
+
+    {% if user.isDeveloper %}
+      {% include "./components/developer_applications.html" %}
+    {% endif %}
+
+    {% include "./components/my_reviews.html" %}
 
   </div>
+
 {% endblock content %}
