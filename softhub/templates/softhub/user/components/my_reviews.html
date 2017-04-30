@@ -12,7 +12,7 @@
 
         <div class="col-md-3 text-center">
           <span class="little-padding">
-            <a href="{% url 'softhub:app_detail' review.application.id %}">
+            <a href="{% url 'softhub:app_detail' review.application.id %}#{{review.id}}">
               {{ review.text }}
             </a>
           </span>
