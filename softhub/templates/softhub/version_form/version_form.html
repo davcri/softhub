@@ -6,14 +6,23 @@
 
 
 {% block content %}
+  <div class="white-background col-md-12">
 
-  <form action={% url 'softhub:app_version_upload' app.id %} method="post"/>
-    {% csrf_token %}
+    <h3>
+      <img src="{{ app.icon.url }}" class="fixed-small-img-size" alt="">
+      {{ app.name }}: new version
+    </h3>
+    <br> <br>
 
-    {% load crispy_forms_tags %}
-    {{ form|crispy }}
+    <div class="col-md-6">
+      <form action={% url 'softhub:app_version_upload' app.id %} method="post"/>
+        {% csrf_token %}
 
-    <input type="submit" value="Submit" class="btn btn-default">
-  </form>
+        {% load crispy_forms_tags %}
+        {{ form|crispy }}
 
+        <input type="submit" value="Submit" class="btn btn-default">
+      </form>
+    </div>
+  </div>
 {% endblock %}
