@@ -5,15 +5,15 @@
 {% endblock %}
 
 {% block content %}
+  <div class="white-background col-md-12">
+    <form class="" action="#" method="post">
 
-  <form class="" action="#" method="post">
+      {% csrf_token %}
+      {% load crispy_forms_tags %}
+      {{ form|crispy }}
 
-    {% csrf_token %}
-    {% load crispy_forms_tags %}
-    {{ form|crispy }}
+      <button type="submit" name="button" class="btn btn-default">Submit</button>
 
-    <button type="submit" name="button" class="btn btn-default">Submit</button>
-
-  </form>
-
+    </form>
+  </div>
 {% endblock %}
