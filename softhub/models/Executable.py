@@ -1,5 +1,7 @@
 from django.db import models
 
+from softhub.validators.file_validator import validate_file_extension
+
 
 def upload_dir(executable, filename):
     '''
@@ -23,7 +25,8 @@ class Executable(models.Model):
     info = models.CharField(max_length=200)
     info.blank = True
 
-    executable_file = models.FileField(upload_to=upload_dir)
+    executable_file = models.FileField(
+        upload_to=upload_dir, validators=[validate_file_extension])
 
     def __str__(self):
         platform = self.release_platform.__str__()
