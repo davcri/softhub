@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 
 from softhub.models.Version import Version
 from softhub.models.Executable import Executable
@@ -74,6 +75,19 @@ class Application(models.Model):
 
     def getReviewCount(self):
         return Review.getReviewCount(self)
+
+    def getRecommendedApps(self):
+        """ Returns a list of similar apps sorted by (descending) average
+        reviews rating.
+
+        The apps considered "similare" are the ones with the same category of
+        the given Application.
+        """
+        apps = Application.objects.filter(category=self.category) \
+            .exclude(id=self.id) \
+            .annotate(rating=Avg('review__rating__value')) \
+            .order_by('-rating')
+        return apps
 
     # def get_non_latest_executables(self):
     #     q1 = Executable.objects.all()
