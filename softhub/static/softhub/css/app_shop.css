@@ -5,13 +5,13 @@
  */
 
 .caption {
-    height: 130px;
-    padding: 1.2em;
-    overflow: hidden;
+  height: 130px;
+  padding: 1.2em;
+  overflow: hidden;
 }
 
 .caption h4 {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .app_name {
@@ -23,33 +23,35 @@
 }
 
 .thumbnail img {
-    width: 128px;
-    padding: 1.2em;
-    margin: 0;
+  width: 128px;
+  padding: 1.2em;
+  margin: 0;
+}
+
 }
 
 .fade-on-hover {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0);
-    transition: 0.5s;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0);
+  transition: 0.5s;
 }
 
 .fade-on-hover:hover {
-    opacity: 0.85;
-    background-color: rgba(0, 0, 0, 0.5)
+  opacity: 0.85;
+  background-color: rgba(0, 0, 0, 0.5)
 }
 
 .ratings {
-    padding-left: 1.2em;
-    padding-right: 1.2em;
-    color: #d17581;
+  padding-left: 1.2em;
+  padding-right: 1.2em;
+  color: #d17581;
 }
 
 .thumbnail {
-    padding: 0;
+  padding: 0;
 }
 
 .thumbnail .caption {
-    padding: 1.2em;
-    color: #333;
+  padding: 1.2em;
+  color: #333;
 }
