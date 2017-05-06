@@ -8,12 +8,14 @@
 {% block stylesheets %}
   {% load static %}
   <link rel="stylesheet" href="{% static 'softhub/css/app_detail.css' %}">
+  <link rel="stylesheet" href="{% static 'softhub/css/application_detail/recommended_items.css' %}">
 {% endblock stylesheets %}
 
 
 {% block content %}
-  <div class="col-md-10">
-    <div class="thumbnail">
+
+  <div class="col-md-9">
+    <div class="thumbnail white-background">
       {# <img class="img-responsive" src="http://placehold.it/800x300" alt=""> #}
       <img class="img-responsive" src="{{ app.icon.url }}" alt= "">
 
@@ -77,8 +79,8 @@
   </div>
 
   {# Suggested items section #}
-  <div class="col-md-2">
-    Suggested items
+  <div class="col-md-3">
+    {% include "./components/recommended_items.html" %}
   </div>
 
 {% endblock %}

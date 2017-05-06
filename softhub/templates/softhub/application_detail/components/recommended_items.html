@@ -1,0 +1,62 @@
+<!--
+  Shows a container of recommended applications. Needs to be improved because
+  doesn't center the icon of the application.
+-->
+
+  <p class="lead">Recommended Apps</p>
+
+
+  {# Application small box #}
+  <div class="recommended-items col-md-12">
+
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+          <img src="{{ app.icon.url }}" alt="{{ app }}" class="media-object fixed-very-small-img-size">
+        </a>
+      </div>
+
+      <div class="media-body">
+        <h4 class="media-heading">{{ app.name }}</h4>
+        <p> {{ app.description|truncatechars:50 }} </p>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  {# Application small box #}
+  <div class="recommended-items col-md-12">
+
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+          <img src="{{ app.icon.url }}" alt="{{ app }}" class="media-object fixed-very-small-img-size">
+        </a>
+      </div>
+
+      <div class="media-body">
+        <h4 class="media-heading">{{ app.name }} asdsad asdasd as das dasdasd</h4>
+        <p class=""> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad </p>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+
+  {# Application small box #}
+  <div class="recommended-items col-md-12">
+
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+          <img src="{{ app.icon.url }}" alt="{{ app }}" class="media-object fixed-very-small-img-size">
+        </a>
+      </div>
+
+      <div class="media-body">
+        <h4 class="media-heading">{{ app.name }}</h4>
+        <p> {{ app.description|truncatechars:50 }} </p>
+      </div>
+    </div>
+  </div>
+  <hr>
