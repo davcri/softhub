@@ -5,18 +5,18 @@
 <link rel="stylesheet" href="{% static 'softhub/css/app_shop.css'%}">
 
 <div class="col-sm-4 col-lg-4 col-md-4">
-  <div class="thumbnail">
-    <div class="fade-on-hover">
-      <a href="{% url 'softhub:app_detail' app.id %}">
+  <a href="{% url 'softhub:app_detail' app.id %}">
+  <div class="thumbnail card-shadow-hover">
+    <div class="text-center">
         <img src="{{ app.icon.url }}" alt="">
-      </a>
     </div>
+
 
     <div class="caption">
       <p>
-        <a class="app_name" href="{% url 'softhub:app_detail' app.id %}">
+        <span class="app_name">
           {{ app.name }}
-        </a>
+        </span>
 
         <span class="label label-default category_label pull-right">
           {{ app.category }}
@@ -37,4 +37,5 @@
       </p>
     </div>
   </div>
+</a>
 </div>

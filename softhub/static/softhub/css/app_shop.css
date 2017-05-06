@@ -28,11 +28,24 @@
   margin: 0;
 }
 
+.card-shadow-hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 3px 1px;
+  transition: 0.5s
+}
+
+.card-shadow-hover:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 12px 2px;
+  transition: 0.5s
+}
+
+
+a:hover {
+  text-decoration: none
 }
 
 .fade-on-hover {
   opacity: 1;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.1);
   transition: 0.5s;
 }
 
