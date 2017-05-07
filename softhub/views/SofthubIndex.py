@@ -37,4 +37,6 @@ class SofthubIndex(TemplateView):
                 category=self.category)
         else:
             context['apps'] = Application.objects.all()
+            # context['best_rated_apps'] = Application.getBestReviewdeApps(3)
+
         return context
