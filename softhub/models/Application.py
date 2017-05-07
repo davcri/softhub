@@ -89,6 +89,19 @@ class Application(models.Model):
             .order_by('-rating')
         return apps
 
+    @staticmethod
+    def getBestReviewdeApps(count):
+        """ Returns a QuerySet containing applications with the highest rating.
+
+        Arguments
+        ----------
+        count : the number of applications to return
+        """
+        apps = Application.objects.all() \
+            .annotate(rating=Avg('review__rating__value')) \
+            .order_by('-rating')[:count]
+        return apps
+
     # def get_non_latest_executables(self):
     #     q1 = Executable.objects.all()
     #     q2 = self.get_latest_executables()
