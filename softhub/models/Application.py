@@ -80,7 +80,7 @@ class Application(models.Model):
         """ Returns a list of similar apps sorted by (descending) average
         reviews rating.
 
-        The apps considered "similare" are the ones with the same category of
+        The apps considered "similar" are the ones with the same category of
         the given Application.
         """
         apps = Application.objects.filter(category=self.category) \
