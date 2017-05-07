@@ -8,10 +8,10 @@ from softhub.models.Category import Category
 
 
 def upload_dir(app, filename):
-    '''
-        The end result will be something like:
-            "uploads/applications/Firefox/icons/firefox.png"
-    '''
+    """ Returns the upload path for applications.
+    The end result will be something like:
+        "uploads/applications/Firefox/icons/firefox.png"
+    """
 
     path = ('applications/' + app.name + '/icons/' + filename)
     # Note: if the file already exist in the same path, django will
@@ -40,7 +40,7 @@ class Application(models.Model):
         return self.developer == developer
 
     def get_latest_version(self):
-        ''' The latest version object'''
+        """ Returns the latest version object """
         versions = Version.objects.filter(application_id=self.id)
 
         # TODO improve ugly code
@@ -53,7 +53,7 @@ class Application(models.Model):
         return latest
 
     def get_latest_executables(self):
-        ''' Executables objects for the latest version of the application '''
+        """ Executables objects for the latest version of the application """
         v = self.get_latest_version()
         executables = Executable.objects.filter(version=v)
         return executables

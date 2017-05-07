@@ -4,10 +4,10 @@ from softhub.validators.file_validator import validate_file_extension
 
 
 def upload_dir(executable, filename):
-    '''
-        The end result will be something like:
-            "uploads/applications/Firefox/45/firefox.exe"
-    '''
+    """ Returns the upload path for executables.
+    The end result will be something like:
+        "uploads/applications/Firefox/45/firefox.exe"
+    """
 
     app_name = executable.version.application.name
     version = executable.version.version_string
