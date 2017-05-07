@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file. This
 project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
-# Version 0.3
+# Version 0.2.1 [WIP]
 
 ### Major changes
 
@@ -12,7 +12,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 - (UI) Using OpenSans font
 - (UI) All forms for creation and update views are now inside a nice div
 
-# Version 0.2 [2017-04-27]
+# Version 0.2.0 [2017-04-27]
 
 ### Major changes
 
@@ -50,7 +50,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
-# Version 0.1 [2017-03-21]
+# Version 0.1.0 [2017-03-21]
 Initial version.
 
 Features basic Application, Version and Executable upload views and forms.
