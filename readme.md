@@ -1,5 +1,7 @@
 # Softhub
 
+[![Join the chat at https://gitter.im/soft_hub/Lobby](https://badges.gitter.im/soft_hub/Lobby.svg)](https://gitter.im/soft_hub/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Demonstrative web application written in modern __Python 3__ using
 [Django Web Framework](https://www.djangoproject.com/).
 
