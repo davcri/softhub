@@ -9,6 +9,7 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 - Added reviews list in user profile
 - Added simple update view for users
+- Added a sidebar with recommended applications in the ApplicationDetail View  
 - (UI) Using OpenSans font
 - (UI) All forms for creation and update views are now inside a nice div
 
