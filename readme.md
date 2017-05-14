@@ -36,12 +36,14 @@ bower install
 # run migrations
 python manage.py migrate
 
-# run a custom Sothub command to iniialize the database
-# https://gitlab.com/davcri91/softhub-site/blob/master/softhub/management/commands/populate.py
-python manage.py populate
+# [Optional] run a custom Softhub command to initialize the database
+# https://gitlab.com/davcri91/softhub-site/blob/master/softhub/management/commands/initialize_db.py
+python manage.py initialize_db
 
+# [Optional] run a custom Softhub command to populate the database with faked data
+python manage.py fake_data
 
-# runs the local development server
+# run the local development server
 python manage.py runserver
 ```
 
