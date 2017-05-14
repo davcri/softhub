@@ -3,8 +3,10 @@ Django==1.10.4
 django-crispy-forms==1.6.1
 django-extensions==1.7.5
 djangorestframework==3.5.3
+Faker==0.7.12
 packaging==16.8
 Pillow==3.4.2
 pydotplus==2.0.2
 pyparsing==2.2.0
+python-dateutil==2.6.0
 six==1.10.0

@@ -1,9 +1,7 @@
 from django.core.management.base import BaseCommand
-from django.utils import timezone
 
 from softhub.models.OperatingSystem import OperatingSystem
 from softhub.models.User import User
-from softhub.models.Developer import Developer
 from softhub.models.License import License
 from softhub.models.Category import Category
 from softhub.models.Rating import Rating
@@ -11,8 +9,12 @@ from softhub.models.Rating import Rating
 
 class Command(BaseCommand):
     args = "<foo bar ...>"
-    help = "Populates the db with faked data values. " \
-        + "Set verbose parameter to 2 in order to see errors messages"
+    help = """
+        Initialize the db with common values for operating systems,
+        categories, licenses and a superuser. Set verbose parameter to 2 in
+        order to see error messages
+    """
+
     verbose = False
 
     def handle(self, *args, **options):
@@ -21,7 +23,6 @@ class Command(BaseCommand):
 
         self.create_os()
         self.create_superuser()
-        self.create_common_users()
         self.create_licenses()
         self.create_categories()
         self.create_ratings()
@@ -42,9 +43,9 @@ class Command(BaseCommand):
 
     def create_superuser(self):
         # TODO add check
-        username = "daenn"
-        email = "davcri91@gmail.com"
-        password = "django12"
+        username = "admin"
+        email = "admin@admin.com"
+        password = "admin12"
 
         try:
             admin = User.objects.create_superuser(
@@ -54,24 +55,6 @@ class Command(BaseCommand):
             print("superuser created:", admin)
         except Exception as e:
             self.printWarning(username, e)
-
-    def create_common_users(self):
-        usernames = ["Google", "Mozilla"]
-        emails = ["google@gmail.com", "moz@mail.com"]
-        pwd = "django12"
-
-        data = list(zip(usernames, emails))
-
-        for (u, m) in data:
-            try:
-                user = User.objects.create_user(username=u, password=pwd)
-
-                dev = Developer(user=user)
-                dev.save()
-                self.stdout.write(str(dev) + " created")
-
-            except Exception as e:
-                self.printWarning(u, e)
 
     def create_os(self):
         os_list = []
