@@ -1,0 +1,14 @@
+<div class="pagination">
+  <span class="step-links">
+    {% if apps.has_previous %}
+      <a href="?page={{ contacts.previous_page_number }}">previous</a>
+    {% endif %}
+
+    <span class="current">
+        Page {{ apps.number }} of {{ apps.paginator.num_pages }}.
+    </span>
+    {% if apps.has_next %}
+      <a href="?page={{ apps.next_page_number }}">next</a>
+    {% endif %}
+  </span>
+</div>

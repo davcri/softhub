@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from softhub.models.Category import Category
 from softhub.models.Application import Application
@@ -6,6 +7,7 @@ from softhub.models.Application import Application
 
 class SofthubIndex(TemplateView):
     template_name = 'softhub/index/index.html'
+    APPS_PER_PAGE = 12
 
     def __init__(self, **kwargs):
         self.category = None
@@ -33,10 +35,25 @@ class SofthubIndex(TemplateView):
 
         if self.category is not None:
             context['current_category'] = self.category
-            context['apps'] = Application.objects.filter(
+            app_list = Application.objects.filter(
                 category=self.category)
         else:
-            context['apps'] = Application.objects.all()
-            # context['best_rated_apps'] = Application.getBestReviewdeApps(3)
+            app_list = Application.objects.all()
 
+        app_paginator = Paginator(app_list, self.APPS_PER_PAGE)
+
+        page = self.request.GET.get('page')
+
+        try:
+            apps = app_paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            apps = app_paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 999), deliver last page of results.
+            apps = app_paginator.page(paginator.num_pages)
+
+        # context['best_rated_apps'] = Application.getBestReviewdeApps(3)
+
+        context['apps'] = apps
         return context
