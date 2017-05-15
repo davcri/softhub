@@ -28,15 +28,23 @@
   margin: 0;
 }
 
-.fade-on-hover {
-  opacity: 1;
-  background-color: rgba(0, 0, 0, 0);
-  transition: 0.5s;
+.card-shadow-hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 3px 1px;
+  /*transform: translate(0px, 100px);*/
+  /*transform: translate(0px, 10px);*/
+  transition: 0.35s;
 }
 
-.fade-on-hover:hover {
-  opacity: 0.85;
-  background-color: rgba(0, 0, 0, 0.5)
+.card-shadow-hover:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 12px 2px;
+  /*transform: translate(100);*/
+  transform: translate(0px, -6px);
+  transition: 0.35s;
+}
+
+
+a:hover {
+  text-decoration: none
 }
 
 .ratings {
