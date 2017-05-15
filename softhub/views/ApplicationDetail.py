@@ -54,4 +54,6 @@ class ApplicationDetail(DetailView):
             context['user_reviewed_app'] = \
                 Review.userReviewedApplication(self.request.user, app)
 
+        context['apps'] = Application.getRecommendedApps(self.object)
+
         return context

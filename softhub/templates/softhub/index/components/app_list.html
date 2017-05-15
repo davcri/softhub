@@ -11,6 +11,17 @@
   </div>
 {% endif %}
 
+{# List of best reviewed applications #}
+<!--
+{% if best_rated_apps %}
+  <h3> Top 3 Apps </h3>
+  {% for app in best_rated_apps %}
+    {% include "./app_shop.html" %}
+  {% endfor %}
+{% endif %}
+-->
+
+{# List of all applications #}
 {% for app in apps %}
   {% include "./app_shop.html" %}
 {% endfor %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Avg
 
 from softhub.models.Version import Version
 from softhub.models.Executable import Executable
@@ -7,10 +8,10 @@ from softhub.models.Category import Category
 
 
 def upload_dir(app, filename):
-    '''
-        The end result will be something like:
-            "uploads/applications/Firefox/icons/firefox.png"
-    '''
+    """ Returns the upload path for applications.
+    The end result will be something like:
+        "uploads/applications/Firefox/icons/firefox.png"
+    """
 
     path = ('applications/' + app.name + '/icons/' + filename)
     # Note: if the file already exist in the same path, django will
@@ -39,7 +40,7 @@ class Application(models.Model):
         return self.developer == developer
 
     def get_latest_version(self):
-        ''' The latest version object'''
+        """ Returns the latest version object """
         versions = Version.objects.filter(application_id=self.id)
 
         # TODO improve ugly code
@@ -52,7 +53,7 @@ class Application(models.Model):
         return latest
 
     def get_latest_executables(self):
-        ''' Executables objects for the latest version of the application '''
+        """ Executables objects for the latest version of the application """
         v = self.get_latest_version()
         executables = Executable.objects.filter(version=v)
         return executables
@@ -74,6 +75,32 @@ class Application(models.Model):
 
     def getReviewCount(self):
         return Review.getReviewCount(self)
+
+    def getRecommendedApps(self):
+        """ Returns a list of similar apps sorted by (descending) average
+        reviews rating.
+
+        The apps considered "similar" are the ones with the same category of
+        the given Application.
+        """
+        apps = Application.objects.filter(category=self.category) \
+            .exclude(id=self.id) \
+            .annotate(rating=Avg('review__rating__value')) \
+            .order_by('-rating')
+        return apps
+
+    @staticmethod
+    def getBestReviewdeApps(count):
+        """ Returns a QuerySet containing applications with the highest rating.
+
+        Arguments
+        ----------
+        count : the number of applications to return
+        """
+        apps = Application.objects.all() \
+            .annotate(rating=Avg('review__rating__value')) \
+            .order_by('-rating')[:count]
+        return apps
 
     # def get_non_latest_executables(self):
     #     q1 = Executable.objects.all()

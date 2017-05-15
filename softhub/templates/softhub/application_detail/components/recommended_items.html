@@ -1,0 +1,26 @@
+<!--
+  Shows a container of recommended applications. Needs to be improved because
+  doesn't center the icon of the application.
+-->
+
+  <p class="lead">Recommended Apps</p>
+
+  {% for a in apps %}
+    {# Application small box #}
+    <a href={% url 'softhub:app_detail' a.id %}>
+      <div class="recommended-items col-md-12">
+        <div class="media">
+          <div class="media-left">
+              <img src="{{ a.icon.url }}" alt="{{ a }}" class="media-object fixed-very-small-img-size">
+          </div>
+
+          <div class="media-body">
+            <h4 class="media-heading">{{ a.name }}</h4>
+            <p> {{ a.description|truncatechars:50 }} </p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <hr>
+  {% endfor %}
