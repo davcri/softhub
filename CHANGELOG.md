@@ -4,6 +4,11 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 # Version 0.2.1 [WIP]
+- Implemented Card-like design for applications in 'softhub:index' IndexView
+- Removed old `populate` command
+- Added `initialize_db` and `fake_data` commands (they can be run with
+  _manage.py_)
+
 
 ### Major changes
 
