@@ -1,28 +1,30 @@
-<nav aria-label="Page navigation">
-  <ul class="pagination">
-    {% if apps.has_previous %}
+<div class="text-center">
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      {% if apps.has_previous %}
       <li>
         <a href="?page={{ apps.previous_page_number }}" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
       </li>
-    {% endif %}
-
-    {% load extra_tags_and_filters %}
-    {% for page in apps.paginator.num_pages|times  %}
-      {% if apps.number == page %}
-        <li class="active"><a href="?page={{page}}"> {{ forloop.counter }} </a></li>
-      {% else %}
-        <li class=""><a href="?page={{page}}"> {{ forloop.counter }} </a></li>
       {% endif %}
-    {% endfor %}
 
-    {% if apps.has_next %}
+      {% load extra_tags_and_filters %}
+      {% for page in apps.paginator.num_pages|times %}
+      {% if apps.number == page %}
+      <li class="active"><a href="?page={{page}}"> {{ forloop.counter }} </a></li>
+      {% else %}
+      <li class=""><a href="?page={{page}}"> {{ forloop.counter }} </a></li>
+      {% endif %}
+      {% endfor %}
+
+      {% if apps.has_next %}
       <li>
         <a href="?page={{ apps.next_page_number }}" aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
         </a>
       </li>
-    {% endif %}
-  </ul>
-</nav>
+      {% endif %}
+    </ul>
+  </nav>
+</div>

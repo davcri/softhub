@@ -4,26 +4,29 @@
   If the list is empty, it shows a warning.
 -->
 
-
-{% if not apps %}
+<div class="row">
+  {% if not apps %}
   <div class="white-background">
     No Application has been uploaded yet!
   </div>
-{% endif %}
+  {% endif %}
 
-{# List of best reviewed applications #}
-<!--
-{% if best_rated_apps %}
+  {# List of best reviewed applications #}
+  <!--
+  {% if best_rated_apps %}
   <h3> Top 3 Apps </h3>
   {% for app in best_rated_apps %}
-    {% include "./app_shop.html" %}
-  {% endfor %}
-{% endif %}
--->
-
-{# List of all applications #}
-{% for app in apps %}
   {% include "./app_shop.html" %}
-{% endfor %}
+  {% endfor %}
+  {% endif %}
+  -->
 
-{% include "./pagination.html" %}
+  {# List of all applications #}
+  {% for app in apps %}
+  {% include "./app_shop.html" %}
+  {% endfor %}
+</div>
+
+<div class="row">
+  {% include "./pagination.html" %}
+</div>
