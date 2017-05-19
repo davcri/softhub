@@ -1,14 +1,28 @@
-<div class="pagination">
-  <span class="step-links">
+<nav aria-label="Page navigation">
+  <ul class="pagination">
     {% if apps.has_previous %}
-      <a href="?page={{ contacts.previous_page_number }}">previous</a>
+      <li>
+        <a href="?page={{ apps.previous_page_number }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
     {% endif %}
 
-    <span class="current">
-        Page {{ apps.number }} of {{ apps.paginator.num_pages }}.
-    </span>
+    {% load extra_tags_and_filters %}
+    {% for page in apps.paginator.num_pages|times  %}
+      {% if apps.number == page %}
+        <li class="active"><a href="?page={{page}}"> {{ forloop.counter }} </a></li>
+      {% else %}
+        <li class=""><a href="?page={{page}}"> {{ forloop.counter }} </a></li>
+      {% endif %}
+    {% endfor %}
+
     {% if apps.has_next %}
-      <a href="?page={{ apps.next_page_number }}">next</a>
+      <li>
+        <a href="?page={{ apps.next_page_number }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
     {% endif %}
-  </span>
-</div>
+  </ul>
+</nav>
