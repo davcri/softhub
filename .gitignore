@@ -5,6 +5,7 @@ __pycache__/
 
 # virtualenv
 ENV/
+env/
 
 # python manage.py can create Models .svg graph with Django_extensions
 *.svg
