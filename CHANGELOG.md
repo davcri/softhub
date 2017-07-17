@@ -1,20 +1,21 @@
 # Changelog
 All notable changes to this project will be documented in this file. This
-project adheres to [Semantic Versioning](http://semver.org/).
+project adheres to [Semantic Versioning](http://semver.org/).  
+Dates are in the following format: [YYYY-MM-DD]
 
 ---
-# Version 0.2.1 [WIP]
-- Implemented Card-like design for applications in 'softhub:index' IndexView
-- Removed old `populate` command
-- Added `initialize_db` and `fake_data` commands (they can be run with
-  _manage.py_)
 
+# Version 0.2.1 [2017-07-17]
 
 ### Major changes
 
+- Removed old `populate` command
+- Added `initialize_db`, `fake_data`, `add_reviews` commands (they can be run
+  with _manage.py_)
 - Added reviews list in user profile
 - Added simple update view for users
 - Added a sidebar with recommended applications in the ApplicationDetail View  
+- (UI) Implemented Card-like design for applications in 'softhub:index' IndexView
 - (UI) Using OpenSans font
 - (UI) All forms for creation and update views are now inside a nice div
 
