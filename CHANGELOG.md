@@ -5,6 +5,9 @@ Dates are in the following format: [YYYY-MM-DD]
 
 ---
 
+# Version 0.2.2 [WIP]
+- Changed license from GPL to MIT
+
 # Version 0.2.1 [2017-07-17]
 
 ### Major changes
