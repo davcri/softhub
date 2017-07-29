@@ -49,10 +49,27 @@ python manage.py runserver
 The following files are used to store dependencies:  
 `requirements.txt`: contains python dependencies  
 `bower.json`: contains external JS and CSS libraries, used by bower  
-`.bower.rc`: configuration file for bower, used to tell bower where to store dependencies
+`.bower.rc`: configuration file for bower, used to tell bower where to store
+dependencies
+
+### Administrator section
+In order to access the admin section, run the app server then go to
+`/softhub/admin/`.
+
+If you executed *initialize_db* command, an admin account will be automatically
+creted with
+
+```
+username: admin
+password: admin12
+```
+
+If you dind't execute *initialize_db*, you'll need to create an admin account
+using `python manage.py createsuperuser`.
 
 ## Standard and conventions
-Code is written trying to follow PEP8 standard: https://www.python.org/dev/peps/pep-0008/
+Code is written trying to follow PEP8 standard:
+https://www.python.org/dev/peps/pep-0008/
 
 ## Management commands
 Generate models diagrams (you'll need Graphviz installed):
