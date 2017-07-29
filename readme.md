@@ -1,13 +1,7 @@
 # Softhub
 
-**Important**: If you want to contribute to AppImageHub, the appstore for 
-[AppImage](http://appimage.org/) project, please use this repository:
-https://gitlab.com/davcri91/AppImageHub
-
---- 
-
 Softhub is a demonstrative web application written in modern __Python 3__ using
-[Django Web Framework](https://www.djangoproject.com/). This is a project for 
+[Django Web Framework](https://www.djangoproject.com/). This is a project for
 my bachelor thesis in computer engineering.
 
 
