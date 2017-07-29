@@ -5,7 +5,6 @@ from django.contrib.auth.decorators import login_required
 
 from .rest_api.view_set import *
 from .views.SofthubIndex import SofthubIndex
-from .views.OperatingSystemDetail import OperatingSystemDetail
 from .views.ApplicationDetail import ApplicationDetail
 from .views.ApplicationUpload import ApplicationUpload
 from .views.ApplicationUpdate import ApplicationUpdate
