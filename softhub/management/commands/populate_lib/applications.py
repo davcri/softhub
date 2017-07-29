@@ -13,7 +13,11 @@ def create_applications(path):
     """ This method search inside a given path for icon files and for each
     one of them, creates an Application instance and saves it on the db.
     """
-    icons = os.listdir(path)
+
+    icons = os.listdir(path)  # throws FileNotFoundError if path doesn't exist
+
+    if len(icons) == 0:
+        raise FileNotFoundError("No file found in {0}".format(path))
 
     for icon in icons:
         with open(path + icon, mode='rb') as icon_file:

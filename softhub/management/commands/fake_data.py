@@ -1,5 +1,4 @@
 from django.core.management.base import BaseCommand
-from django.utils import timezone
 
 from softhub.models.User import User
 from softhub.models.Developer import Developer
@@ -20,7 +19,6 @@ class Command(BaseCommand):
     # /usr/share/icons/hicolor/256x256/apps/
     # Copy them and put in ./assets/icons/
     FAKE_ICONS_PATH = './assets/icons/'
-    # FAKE_ICONS_PATH = '/usr/share/icons/hicolor/256x256/apps/'
 
     verbose = False
 
@@ -28,14 +26,14 @@ class Command(BaseCommand):
         if options['verbosity'] in (2, 3):
             self.verbose = True
 
-        self.create_common_users()
-        create_applications(self.FAKE_ICONS_PATH)
-
-    def printWarning(self, obj1, exception):
-        self.stderr.write("WARNING:" + str(obj1) + " not created.")
-
-        if self.verbose:
-            self.stdout.write(str(exception))
+        try:
+            self.create_common_users()
+            create_applications(self.FAKE_ICONS_PATH)
+        except FileNotFoundError as err:
+            self.stderr.write(
+                "{0}. ".format(str(err))
+                + "Copy icons in the path specified and re-run this command"
+                )
 
     def create_common_users(self):
         usernames = ["Google", "Mozilla"]
@@ -50,7 +48,9 @@ class Command(BaseCommand):
 
                 dev = Developer(user=user)
                 dev.save()
-                self.stdout.write(str(dev) + " created")
+                self.stdout.write("User created: {0}".format(str(dev)))
 
             except Exception as e:
-                self.printWarning(u, e)
+                self.stderr.write(
+                    "WARNING: {0} User, {1}".format(u, str(e))
+                )
