@@ -15,6 +15,7 @@ class OperatingSystem(models.Model):
         ('windows', 'Windows'),
         ('osx', 'OSx')
     )
+    
     family = models.CharField(
         max_length=200,
         unique=True,

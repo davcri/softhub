@@ -50,10 +50,6 @@ urlpatterns = [
     ##################
     # Detail Views   #
     ##################
-    url(r'^os/(?P<pk>[0-9]+)/$',
-        OperatingSystemDetail.as_view(),
-        name='os_detail'),
-
     url(r'^app/(?P<pk>[0-9]+)/$',
         ApplicationDetail.as_view(),
         name='app_detail'),
