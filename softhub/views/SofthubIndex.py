@@ -3,6 +3,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from softhub.models.Category import Category
 from softhub.models.Application import Application
+from softhub.models.OperatingSystem import OperatingSystem
 
 
 class SofthubIndex(TemplateView):
@@ -38,7 +39,8 @@ class SofthubIndex(TemplateView):
             app_list = Application.objects.filter(
                 category=self.category)
         else:
-            app_list = Application.objects.all()
+            app_list = self.getAppsForRequestOS()
+            # app_list = Application.objects.all()
 
         app_paginator = Paginator(app_list, self.APPS_PER_PAGE)
 
@@ -57,3 +59,24 @@ class SofthubIndex(TemplateView):
 
         context['apps'] = apps
         return context
+
+    def getAppsForRequestOS(self):
+        os = self.detectOS()
+        apps = OperatingSystem.getAppsForOS(os)  # Add error catching!
+
+        return apps
+
+    def detectOS(self):
+        http_user_agent = self.request.META.get("HTTP_USER_AGENT")
+        http_user_agent = http_user_agent.lower()
+
+        if 'linux' in http_user_agent:
+            request_os = 'linux'
+        elif 'windows' in http_user_agent:
+            request_os = 'windows'
+        elif 'mac' in http_user_agent:
+            request_os = 'osx'
+        else:
+            request_os = None
+
+        return request_os
