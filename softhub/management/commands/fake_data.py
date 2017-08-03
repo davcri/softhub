@@ -33,6 +33,8 @@ class Command(BaseCommand):
             self.stderr.write(
                 "{0}. ".format(str(err))
                 + "Copy icons in the path specified and re-run this command"
+                + "If you are on a Linux, try something like this:\n"
+                + "> cp /usr/share/icons/hicolor/128x128/apps/* ./assets/icons"
                 )
 
     def create_common_users(self):
