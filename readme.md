@@ -1,8 +1,16 @@
 # Softhub
 
 Softhub is a demonstrative web application written in modern __Python 3__ using
-[Django Web Framework](https://www.djangoproject.com/). This is a project for
-my bachelor thesis in computer engineering.
+[Django Web Framework](https://www.djangoproject.com/). 
+
+This is a project for my bachelor thesis in computer engineering:
+
+> Django: design and development of an open source web application
+
+- [Blog post about my University projects](https://davcri.github.io/posts/software-projects-university/)
+- Thesis ([LaTeX source repository](https://gitlab.com/davcri91/thesis))
+- Thesis ([PDF](https://gitlab.com/davcri91/thesis/uploads/b53e6988702a7bef746bde6cd351fd1c/Tesi_v7_bozza_finale.pdf), only available in Italian)
+ 
 
 
 ## Development requirements
