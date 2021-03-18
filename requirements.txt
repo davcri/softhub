@@ -5,7 +5,7 @@ django-extensions==1.7.5
 djangorestframework==3.5.3
 Faker==0.7.12
 packaging==16.8
-Pillow==3.4.2
+Pillow==8.1.1
 pydotplus==2.0.2
 pyparsing==2.2.0
 python-dateutil==2.6.0
